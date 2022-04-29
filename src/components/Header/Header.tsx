@@ -5,9 +5,9 @@ import './Header.css';
 function Header() {
   return (
     <header className='header'>
-      <ul className='menu'>
-        <li>Вход</li>
-        <li>Регистрация</li>
+      <ul className='header-menu'>
+        <li className='entry'>Вход</li>
+        <li className='registration'>Регистрация</li>
       </ul>
     </header>
   );

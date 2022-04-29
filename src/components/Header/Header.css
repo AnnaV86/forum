@@ -1,7 +1,18 @@
 .header {
   margin: 0;
   height: 70px;
-  background-color: #a8ffdb;
+  background-color: #69ffc1;
   display: flex;
   flex-direction: row;
+}
+
+.header-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  list-style: none;
+}
+
+.entry {
+  margin-right: 10px;
 }
