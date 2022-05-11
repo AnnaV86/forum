@@ -23,11 +23,11 @@ server.use(jsonServer.bodyParser);
 //     res.jsonp(result);
 //   }
 
-//   if (req.method === 'POST') {
-//     const result = db.concat(req.body);
+// if (req.method === 'POST') {
+//   const result = db.concat(req.body);
 
-//     res.jsonp(result);
-//   }
+//   res.jsonp(result);
+// }
 
 //   next();
 // });

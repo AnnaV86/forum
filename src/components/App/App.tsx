@@ -1,37 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Header from '../Header/Header';
-import { Main } from '../Main/Main';
-import { Auth } from '../Auth/Auth';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthEnterPage } from '../AuthEnterPage/AuthEnterPage';
+import { Home } from '../Home/Home';
+import { NavBar } from '../NavBar/NavBar';
+import './app.module.css';
 
-import { IStore } from '../../store';
-import { addMessageAction } from '../../store/reducers/message';
-
-function App() {
-  const messageAuth = useSelector((store: IStore) => store.messageReducer);
-  const [message, setMessage] = useState<string>('Привет я стейт');
-  const dispatch: any = useDispatch();
-
-  useEffect(() => {
-    if (messageAuth !== '') {
-      const timeOutId = setTimeout(() => {
-        dispatch(addMessageAction(''));
-      }, 3000);
-      return () => {
-        clearTimeout(timeOutId);
-      };
-    }
-  }, [messageAuth]);
-
+export const App = () => {
   return (
-    <div className='App'>
-      <Header />
-      <Main message={message} />
-      <div className='messageAuth'>{messageAuth}</div>
-      <Auth />
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path='/' element={<AuthEnterPage />} />
+        <Route path='/home' element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
-
-export default App;
+};

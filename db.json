@@ -9,6 +9,30 @@
       "login": "Ivan",
       "password": "1",
       "role": "user"
+    },
+    {
+      "id": "9tYsjNkKwdw_53nChNQiZ",
+      "login": "Mir",
+      "password": "1",
+      "firstName": "Мирослав",
+      "lastName": "Видутин",
+      "role": "user"
+    },
+    {
+      "id": "krKuCvsaERiOh40sEZsqr",
+      "login": "Mar",
+      "password": "1",
+      "firstName": "Margo",
+      "lastName": "Vidutina",
+      "role": "user"
+    },
+    {
+      "id": "Kgfe63XphQgrLREHOChoS",
+      "login": "Margo",
+      "password": "3",
+      "firstName": "3",
+      "lastName": "3",
+      "role": "user"
     }
   ]
 }

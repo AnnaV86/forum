@@ -1,14 +1,14 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getUserThunk } from '../../store/actionsThunk';
-import './Auth.css';
+import './auth.module.css';
 
 export interface IAuthData {
   login: string;
   password: string;
 }
 
-export const Auth = () => {
+export const Auth: FC = () => {
   const dispatch: any = useDispatch();
   const [authData, setAuthData] = useState<IAuthData>({
     login: '',
@@ -25,7 +25,7 @@ export const Auth = () => {
   };
 
   return (
-    <div>
+    <div className='auth-form'>
       <input name='login' placeholder='Введите логин' onChange={inputData} />
       <input
         name='password'
