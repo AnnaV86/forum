@@ -1,16 +1,19 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthEnterPage } from '../AuthEnterPage/AuthEnterPage';
+import { Auth } from '../Auth/Auth';
 import { Home } from '../Home/Home';
 import { NavBar } from '../NavBar/NavBar';
-import './app.module.css';
+import { Registration } from '../Registration/Registration';
+import { Welcome } from '../Welcome/Welcome';
 
 export const App = () => {
   return (
     <BrowserRouter>
       <NavBar />
       <Routes>
-        <Route path='/' element={<AuthEnterPage />} />
+        <Route path='/auth' element={<Auth />} />
+        <Route path='/registration' element={<Registration />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Welcome />} />
       </Routes>
     </BrowserRouter>
   );

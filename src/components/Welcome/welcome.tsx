@@ -1,14 +1,10 @@
 import React, { FC } from 'react';
-import './welcome.module.css';
+import style from './welcome.module.css';
 
-interface IMain {
-  message: string;
-}
-
-export const Main: FC<IMain> = ({ message }) => {
+export const Welcome: FC = () => {
   return (
-    <div className='main'>
-      <p>{message}</p>
+    <div className={style.welcome}>
+      <h2>Добро пожаловать на наш форум! Войдите, или зарегистрируйтесь</h2>
     </div>
   );
 };

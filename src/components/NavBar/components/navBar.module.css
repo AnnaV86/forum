@@ -7,7 +7,7 @@
   flex-direction: row;
 }
 
-.header-menu {
+.headerMenu {
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -15,20 +15,23 @@
   margin-top: 20px;
 }
 
-.menu-item {
+.menuItem {
   cursor: pointer;
   text-decoration: none;
   color: black;
+  margin-right: 20px;
 }
 
-.menu-item__entry {
+.menuItemEntry {
   margin-right: 10px;
 }
 
-.menu-item__exit {
+.menuItemExit {
   color: red;
+  right: 30px;
+  position: absolute;
 }
 
-.menu__link_active {
+.menuLinkActive {
   font-weight: bold;
 }

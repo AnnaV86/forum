@@ -27,14 +27,8 @@ export function getNewUserThunk(userData: IUserData) {
     if (findUser) {
       dispatch(addMessageAction('Данный логин уже занят'));
     } else {
-      dispatch(addUserThunk(userData));
+      const newUser = await addUserFetch(userData);
+      dispatch(loginUserAction(newUser));
     }
-  };
-}
-
-export function addUserThunk(userData: IUserData) {
-  return async (dispatch: any) => {
-    const newUser = await addUserFetch(userData);
-    console.log(newUser);
   };
 }

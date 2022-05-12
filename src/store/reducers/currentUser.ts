@@ -7,8 +7,9 @@ export function loginUserAction(user: any) {
   };
 }
 
-const initialState = {
-  login: '',
+export const initialState = {
+  id: '',
+  login: 'Анюта',
   password: '',
   firstName: '',
   lastName: '',

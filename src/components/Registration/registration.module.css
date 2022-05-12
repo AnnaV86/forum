@@ -1,9 +1,11 @@
-.registration-form {
+.registrationForm {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 500px;
 }
 
-.registration-form input {
+.registrationForm input {
   margin-bottom: 5px;
 }

@@ -1,5 +1,9 @@
-.main {
-  background-color: #fff;
-  margin: 0;
-  height: 70px;
+.welcome {
+  background-image: url(../../../public/Без\ имени-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
