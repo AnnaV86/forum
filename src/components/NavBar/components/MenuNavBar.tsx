@@ -26,27 +26,17 @@ export const MenuNavBar = () => {
               .join(' ')
           }
         >
-          1
+          Главная
         </NavLink>
         <NavLink
-          to='/2'
+          to='/addPost'
           className={({ isActive }) =>
             [style.menuItem, isActive ? activeClassName : null]
               .filter(Boolean)
               .join(' ')
           }
         >
-          2
-        </NavLink>
-        <NavLink
-          to='/3'
-          className={({ isActive }) =>
-            [style.menuItem, isActive ? activeClassName : null]
-              .filter(Boolean)
-              .join(' ')
-          }
-        >
-          3
+          Создать пост
         </NavLink>
         <NavLink
           to='/'

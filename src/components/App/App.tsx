@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Auth } from '../Auth/Auth';
+import { AddPost } from '../AddPost/AddPost';
 import { Home } from '../Home/Home';
 import { NavBar } from '../NavBar/NavBar';
 import { Registration } from '../Registration/Registration';
@@ -13,6 +14,7 @@ export const App = () => {
         <Route path='/auth' element={<Auth />} />
         <Route path='/registration' element={<Registration />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/addPost' element={<AddPost />} />
         <Route path='/' element={<Welcome />} />
       </Routes>
     </BrowserRouter>

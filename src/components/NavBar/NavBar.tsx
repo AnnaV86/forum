@@ -6,6 +6,5 @@ import { MenuNavBar } from './components/MenuNavBar';
 
 export const NavBar: FC = () => {
   const login = useSelector((store: IStore) => store.currentUserReducer.login);
-  console.log(login);
   return <>{login === '' ? <AuthNavBar /> : <MenuNavBar />}</>;
 };

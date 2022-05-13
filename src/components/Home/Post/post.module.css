@@ -1,0 +1,39 @@
+.post {
+  min-height: 50px;
+  width: 800px;
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 3px rgb(84, 216, 161);
+  border: 1px solid rgb(84, 216, 161);
+  padding: 15px 15px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.title {
+  margin: 0;
+}
+
+.text {
+  margin: 10px 0 0;
+}
+
+.author {
+  margin: 10px 15px 0 0;
+  text-align: end;
+}
+
+.delete {
+  background-image: url(../../../../public/delete.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border-radius: 3px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+}

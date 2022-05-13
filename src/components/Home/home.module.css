@@ -1,0 +1,17 @@
+.home {
+  background-image: linear-gradient(rgb(219, 255, 253), #69ffc1);
+  height: 100vh;
+}
+
+.title {
+  text-align: center;
+  margin: 0;
+}
+
+.listPosts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  flex-direction: column;
+}

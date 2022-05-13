@@ -1,4 +1,10 @@
-import { addUserFetch, getUsersFetch } from '../../api';
+import {
+  addNewPostFetch,
+  addUserFetch,
+  getPostsFetch,
+  getUsersFetch,
+} from '../../api';
+import { INewPost } from '../../components/AddPost/AddPost';
 import { IAuthData } from '../../components/Auth/Auth';
 import { IUserData } from '../../components/Registration/Registration';
 import { loginUserAction } from '../reducers/currentUser';
