@@ -1,19 +1,14 @@
 import { nanoid } from 'nanoid';
 import React, { FC, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { addNewPostFetch } from '../../api';
-import { IStore } from '../../store';
+import { IStore, IPost } from '../../store';
+import { addNewPostThunk } from '../../store/actionsThunk';
 import style from './addPost.module.css';
 
-export interface INewPost {
-  id: string;
-  title: string;
-  text: string;
-  author: string;
-}
 export const AddPost: FC = () => {
-  const [newPost, setNewPost] = useState<INewPost>({
+  const dispatch: any = useDispatch();
+  const [newPost, setNewPost] = useState<IPost>({
     id: '',
     title: '',
     text: '',
@@ -33,7 +28,7 @@ export const AddPost: FC = () => {
   };
 
   const handleSubmit = () => {
-    addNewPostFetch(newPost);
+    dispatch(addNewPostThunk(newPost));
     navigate('/home');
     setNewPost({
       id: '',

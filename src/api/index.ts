@@ -1,5 +1,5 @@
-import { INewPost } from '../components/AddPost/AddPost';
 import { IUserData } from '../components/Registration/Registration';
+import { IPost } from '../store';
 
 /**
  * Запрашиваем всех пользователей
@@ -40,7 +40,7 @@ export const getPostsFetch = async () => {
  * Добавляем нового поста
  */
 
-export const addNewPostFetch = async (newPost: INewPost) => {
+export const addNewPostFetch = async (newPost: IPost) => {
   const response = await fetch(`http://localhost:3010/posts`, {
     method: 'POST',
     headers: {
@@ -48,16 +48,15 @@ export const addNewPostFetch = async (newPost: INewPost) => {
     },
     body: JSON.stringify(newPost),
   });
-  const result = await response.json();
-  console.log(result);
-  return result;
+
+  return await response.json();
 };
 
 /**
  * Удаление поста
  * @param id
  */
-export const deleteCardFetch = async (id: INewPost) => {
+export const deletePostFetch = async (id: string) => {
   const response = await fetch(`http://localhost:3010/posts/${id}`, {
     method: 'DELETE',
   });

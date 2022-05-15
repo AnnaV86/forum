@@ -1,14 +1,15 @@
+import { IPost } from '..';
 import {
   addNewPostFetch,
   addUserFetch,
-  getPostsFetch,
+  deletePostFetch,
   getUsersFetch,
 } from '../../api';
-import { INewPost } from '../../components/AddPost/AddPost';
 import { IAuthData } from '../../components/Auth/Auth';
 import { IUserData } from '../../components/Registration/Registration';
 import { loginUserAction } from '../reducers/currentUser';
 import { addMessageAction } from '../reducers/message';
+import { deletePostAction, addPostAction } from '../reducers/posts';
 
 export function getUserThunk(authData: IAuthData) {
   return async (dispatch: any) => {
@@ -36,5 +37,21 @@ export function getNewUserThunk(userData: IUserData) {
       const newUser = await addUserFetch(userData);
       dispatch(loginUserAction(newUser));
     }
+  };
+}
+
+export function addNewPostThunk(newPost: IPost) {
+  return async (dispatch: any) => {
+    const post = await addNewPostFetch(newPost);
+
+    dispatch(addPostAction(post));
+  };
+}
+
+export function deletePostThunk(id: string) {
+  return async (dispatch: any) => {
+    await deletePostFetch(id);
+
+    dispatch(deletePostAction(id));
   };
 }

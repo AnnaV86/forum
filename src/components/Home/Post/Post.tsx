@@ -1,15 +1,14 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
-import { deleteCardFetch } from '../../../api';
 import { IStore } from '../../../store';
 import style from './post.module.css';
 
-interface IPost {
+interface IPostProps {
   post: any;
   deleteCard: any;
 }
 
-export const Post: FC<IPost> = ({ post, deleteCard }) => {
+export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
   const login = useSelector((store: IStore) => store.currentUserReducer.login);
 
   return (
