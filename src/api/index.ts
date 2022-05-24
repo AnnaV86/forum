@@ -36,7 +36,7 @@ export const getPostsFetch = async () => {
 };
 
 /**
- * Добавляем нового поста
+ * Добавляем новый поста
  */
 
 export const addNewPostFetch = async (newPost: IPost) => {
@@ -46,6 +46,23 @@ export const addNewPostFetch = async (newPost: IPost) => {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(newPost),
+  });
+
+  return await response.json();
+};
+
+/**
+ * Редактируем пост
+ */
+
+export const editPostFetch = async (post: IPost) => {
+  console.log(post);
+  const response = await fetch(`http://localhost:3010/posts/${post.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(post),
   });
 
   return await response.json();

@@ -26,20 +26,36 @@
   text-align: end;
 }
 
+.editPost {
+  cursor: pointer;
+  margin-left: 10px;
+}
+
 .discuss {
   cursor: pointer;
 }
 
 .delete {
-  background-image: url(../../../../public/delete.png);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  border-radius: 3px;
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 10px;
-  top: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.editForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputTitle {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.inputText {
+  min-height: 200px;
+  margin-bottom: 10px;
+}
+
+.buttonSave {
+  height: 30px;
   cursor: pointer;
 }

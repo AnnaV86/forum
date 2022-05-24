@@ -14,5 +14,5 @@ code {
 
 #root {
   height: 100vh;
-  background-color: rgb(231, 255, 247);
+  background-image: linear-gradient(rgb(219, 255, 253), #69ffc1);
 }

@@ -1,16 +1,21 @@
 import { Navigate } from 'react-router-dom';
-import { IPost } from '..';
+import { IAnswer, IPost } from '..';
 import {
   addNewPostFetch,
   addUserFetch,
   deletePostFetch,
+  editPostFetch,
   getUsersFetch,
 } from '../../api';
 import { IAuthData } from '../../components/Auth/Auth';
 import { IUserData } from '../../components/Registration/Registration';
 import { loginUserAction } from '../reducers/currentUser';
 import { addMessageAction } from '../reducers/message';
-import { deletePostAction, addPostAction } from '../reducers/posts';
+import {
+  deletePostAction,
+  addPostAction,
+  editPostAction,
+} from '../reducers/posts';
 
 export function getUserThunk(authData: IAuthData) {
   return async (dispatch: any) => {
@@ -56,5 +61,14 @@ export function deletePostThunk(id: string) {
     await deletePostFetch(id);
 
     dispatch(deletePostAction(id));
+  };
+}
+
+export function editPostThunk(post: IPost) {
+  return async (dispatch: any) => {
+    const editPost = await editPostFetch(post);
+    console.log(editPost);
+
+    dispatch(editPostAction(editPost));
   };
 }

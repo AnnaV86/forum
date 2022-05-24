@@ -3,6 +3,7 @@ import { IPost } from '..';
 const GET_POST = 'GET_POST';
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
+const EDIT_POST = 'EDIT_POST';
 
 export function getPostAction(postsArray: Array<IPost>) {
   return {
@@ -15,6 +16,13 @@ export function addPostAction(newPost: Array<IPost>) {
   return {
     type: ADD_POST,
     payload: newPost,
+  };
+}
+
+export function editPostAction(post: Array<IPost>) {
+  return {
+    type: EDIT_POST,
+    payload: post,
   };
 }
 
@@ -34,6 +42,14 @@ export const postsReducer = (state = initialState, action: any) => {
     }
     case 'ADD_POST': {
       return { ...state, posts: state.posts.concat(action.payload) };
+    }
+    case 'EDIT_POST': {
+      return {
+        ...state,
+        posts: state.posts.map((el: any) =>
+          el.id === action.payload.id ? action.payload : el
+        ),
+      };
     }
     case 'DELETE_POST': {
       return {

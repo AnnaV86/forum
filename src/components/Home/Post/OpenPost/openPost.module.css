@@ -58,8 +58,52 @@
 .commentInput {
   width: 85%;
   margin-right: 10px;
+  min-height: 18px;
 }
 
 .commentButton {
   width: 80px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.delete {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  height: 25px;
+}
+
+.editPost {
+  cursor: pointer;
+  height: 25px;
+}
+
+.editForm {
+  margin-top: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 5px solid rgb(38, 132, 104);
+}
+
+.inputTitle {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.inputText {
+  min-height: 200px;
+  margin-bottom: 10px;
+}
+
+.buttonSave {
+  height: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
 }
