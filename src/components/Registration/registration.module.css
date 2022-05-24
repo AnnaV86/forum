@@ -1,3 +1,14 @@
+.registration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.messageAuth {
+  color: red;
+}
+
 .registrationForm {
   margin-top: 50px;
   display: flex;
@@ -8,4 +19,8 @@
 
 .registrationForm input {
   margin-bottom: 5px;
+}
+
+.inputButton {
+  cursor: pointer;
 }

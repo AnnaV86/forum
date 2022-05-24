@@ -1,3 +1,4 @@
+import { Navigate } from 'react-router-dom';
 import { IPost } from '..';
 import {
   addNewPostFetch,
@@ -19,7 +20,9 @@ export function getUserThunk(authData: IAuthData) {
       (el) => el.login === authData.login && el.password === authData.password
     );
     if (findUser) {
-      dispatch(loginUserAction(findUser));
+      localStorage.setItem('login', findUser.login);
+      return 'ok';
+      // dispatch(loginUserAction(findUser));
     } else {
       dispatch(addMessageAction('Вы ввели не правильный логин или пароль'));
     }

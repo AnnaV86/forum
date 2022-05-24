@@ -28,7 +28,8 @@ export const Registration: FC = () => {
     role: '',
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
-  const login = useSelector((store: IStore) => store.currentUserReducer.login);
+
+  const login = localStorage.getItem('login');
 
   const inputData = (evt: any) => {
     const { name, value } = evt.target;
@@ -41,7 +42,10 @@ export const Registration: FC = () => {
   };
 
   const enterAuth = () => {
-    dispatch(getNewUserThunk(userData));
+    if (userData.login && userData.password) {
+      dispatch(getNewUserThunk(userData));
+    }
+    dispatch(addMessageAction('Введите логин и пароль'));
   };
   useEffect(() => {
     if (messageAuth !== '') {
@@ -55,13 +59,13 @@ export const Registration: FC = () => {
   }, [messageAuth]);
 
   useEffect(() => {
-    if (login !== '') {
+    if (login) {
       navigate('/home');
     }
   }, [login]);
 
   return (
-    <>
+    <div className={style.registration}>
       <div className={style.messageAuth}>{messageAuth}</div>
       <div className={style.registrationForm}>
         <input name='login' placeholder='Введите логин' onChange={inputData} />
@@ -80,10 +84,10 @@ export const Registration: FC = () => {
           placeholder='Введите Фамилию'
           onChange={inputData}
         />
-        <button type='button' onClick={enterAuth}>
+        <button className={style.inputButton} type='button' onClick={enterAuth}>
           Войти
         </button>
       </div>
-    </>
+    </div>
   );
 };

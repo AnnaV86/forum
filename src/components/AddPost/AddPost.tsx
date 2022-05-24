@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid';
-import React, { FC, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { IStore, IPost } from '../../store';
+import { IPost } from '../../store';
 import { addNewPostThunk } from '../../store/actionsThunk';
 import style from './addPost.module.css';
 
@@ -13,9 +13,10 @@ export const AddPost: FC = () => {
     title: '',
     text: '',
     author: '',
+    answer: [],
   });
   const navigate = useNavigate();
-  const login = useSelector((store: IStore) => store.currentUserReducer.login);
+  const login: any = localStorage.getItem('login');
 
   const inputData = (evt: any) => {
     const { name, value } = evt.target;
@@ -35,8 +36,15 @@ export const AddPost: FC = () => {
       title: '',
       text: '',
       author: '',
+      answer: [],
     });
   };
+
+  useEffect(() => {
+    if (login) {
+      navigate('/addPost');
+    }
+  }, [login]);
 
   return (
     <div className={style.addPost}>

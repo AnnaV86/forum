@@ -19,19 +19,23 @@ export const Auth: FC = () => {
     password: '',
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
-  const login = useSelector((store: IStore) => store.currentUserReducer.login);
+
+  const login = localStorage.getItem('login');
 
   const inputData = (evt: any) => {
     const { name, value } = evt.target;
     setAuthData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const enterAuth = () => {
-    dispatch(getUserThunk(authData));
+  const enterAuth = async () => {
+    const response = await dispatch(getUserThunk(authData));
+    if (response === 'ok') {
+      navigate('/home');
+    }
   };
 
   useEffect(() => {
-    if (login !== '') {
+    if (login) {
       navigate('/home');
     }
   }, [login]);
@@ -48,19 +52,25 @@ export const Auth: FC = () => {
   }, [messageAuth]);
 
   return (
-    <>
+    <div className={style.auth}>
       <div className={style.messageAuth}>{messageAuth}</div>
       <div className={style.authForm}>
-        <input name='login' placeholder='Введите логин' onChange={inputData} />
         <input
+          className={style.inputForm}
+          name='login'
+          placeholder='Введите логин'
+          onChange={inputData}
+        />
+        <input
+          className={style.inputForm}
           name='password'
           placeholder='Введите пароль'
           onChange={inputData}
         />
-        <button type='button' onClick={enterAuth}>
+        <button className={style.inputButton} type='button' onClick={enterAuth}>
           Войти
         </button>
       </div>
-    </>
+    </div>
   );
 };

@@ -1,18 +1,13 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import {
-  initialState,
-  loginUserAction,
-} from '../../../store/reducers/currentUser';
 import style from './navBar.module.css';
 
 export const MenuNavBar = () => {
-  const dispatch: any = useDispatch();
   const activeClassName = style.menuLinkActive;
+  const login = localStorage.getItem('login');
 
   const outUser = () => {
-    dispatch(loginUserAction(initialState));
+    localStorage.removeItem('login');
   };
 
   return (
@@ -38,6 +33,7 @@ export const MenuNavBar = () => {
         >
           Создать пост
         </NavLink>
+        <div>{login}</div>
         <NavLink
           to='/'
           className={({ isActive }) =>

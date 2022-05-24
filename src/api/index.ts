@@ -23,7 +23,6 @@ export const addUserFetch = async (userData: IUserData) => {
     body: JSON.stringify(userData),
   });
   const result = await response.json();
-  console.log(result);
   return result;
 };
 

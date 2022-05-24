@@ -4,6 +4,8 @@ import style from './navBar.module.css';
 
 export const AuthNavBar = () => {
   const activeClassName = style.menuLinkActive;
+  const classNameFactory = (isActive: boolean, className: string) =>
+    [className, isActive ? activeClassName : null].filter(Boolean).join(' ');
 
   return (
     <header className={style.header}>
@@ -11,12 +13,10 @@ export const AuthNavBar = () => {
         <NavLink
           to='/auth'
           className={({ isActive }) =>
-            [
-              `${style.menuItem} ${style.menuItemEntry}`,
-              isActive ? activeClassName : null,
-            ]
-              .filter(Boolean)
-              .join(' ')
+            classNameFactory(
+              isActive,
+              `${style.menuItem} ${style.menuItemEnter}`
+            )
           }
         >
           Вход
@@ -24,12 +24,10 @@ export const AuthNavBar = () => {
         <NavLink
           to='/registration'
           className={({ isActive }) =>
-            [
-              `${style.menuItem} ${style.menuItemRegistration}`,
-              isActive ? activeClassName : null,
-            ]
-              .filter(Boolean)
-              .join(' ')
+            classNameFactory(
+              isActive,
+              `${style.menuItem} ${style.menuItemRegistration}`
+            )
           }
         >
           Регистрация

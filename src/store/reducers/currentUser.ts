@@ -9,7 +9,7 @@ export function loginUserAction(user: any) {
 
 export const initialState = {
   id: '',
-  login: 'Анюта',
+  login: '',
   password: '',
   firstName: '',
   lastName: '',

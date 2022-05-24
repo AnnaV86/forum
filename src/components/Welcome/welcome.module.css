@@ -7,3 +7,8 @@
   justify-content: center;
   color: white;
 }
+
+.linkWelcome {
+  text-decoration: none;
+  color: rgb(124, 255, 227);
+}

@@ -5,6 +5,7 @@ import { Home } from '../Home/Home';
 import { NavBar } from '../NavBar/NavBar';
 import { Registration } from '../Registration/Registration';
 import { Welcome } from '../Welcome/Welcome';
+import { OpenPost } from '../Home/Post/OpenPost/OpenPost';
 
 export const App = () => {
   return (
@@ -15,7 +16,8 @@ export const App = () => {
         <Route path='/registration' element={<Registration />} />
         <Route path='/home' element={<Home />} />
         <Route path='/addPost' element={<AddPost />} />
-        <Route path='/' element={<Welcome />} />
+        <Route path='/openPost/:id' element={<OpenPost />} />
+        <Route path='*' element={<Welcome />} />
       </Routes>
     </BrowserRouter>
   );

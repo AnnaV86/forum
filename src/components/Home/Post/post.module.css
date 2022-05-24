@@ -9,6 +9,7 @@
   padding: 15px 15px;
   margin-bottom: 10px;
   position: relative;
+  cursor: pointer;
 }
 
 .title {
@@ -20,8 +21,13 @@
 }
 
 .author {
-  margin: 10px 15px 0 0;
+  position: relative;
+  top: 40px;
   text-align: end;
+}
+
+.discuss {
+  cursor: pointer;
 }
 
 .delete {
