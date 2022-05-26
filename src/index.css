@@ -13,6 +13,7 @@ code {
 }
 
 #root {
-  height: 100vh;
+  min-height: 100vh;
+  padding-bottom: 50px;
   background-image: linear-gradient(rgb(219, 255, 253), #69ffc1);
 }

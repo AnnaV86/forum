@@ -1,0 +1,65 @@
+.commentAuthor {
+  color: rgb(0, 110, 110);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.commentText {
+  padding-right: 10px;
+}
+
+.commentInputText {
+  width: 95%;
+  min-height: 100px;
+  text-align: start;
+}
+
+.buttonSave {
+  cursor: pointer;
+}
+
+.buttonUpdateAnswer {
+  background-image: url(../../../../../images/pen_2_fill.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border: none;
+  position: absolute;
+  right: 40px;
+  top: 1px;
+  cursor: pointer;
+}
+
+.buttonDeleteAnswer {
+  background-image: url(../../../../../images/delete_line.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border: none;
+  position: absolute;
+  right: 10px;
+  top: 1px;
+  cursor: pointer;
+}
+
+.like {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.likeButton {
+  border: none;
+  background-color: white;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.likeCount {
+  margin: 0 0 0 5px;
+}

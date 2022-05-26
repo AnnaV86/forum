@@ -1,5 +1,5 @@
 .post {
-  margin: 50px auto;
+  margin: 50px auto 0;
   width: 80vh;
   background-color: white;
   border: 2px solid rgb(38, 132, 104);
@@ -11,48 +11,26 @@
   align-items: center;
 }
 
-.postContainer {
-  width: 95%;
-  border-bottom: 5px solid rgb(38, 132, 104);
-}
-
-.title {
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 30px;
-}
-
-.text {
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: start;
-}
-
-.author {
-  margin: 0;
-  width: 90%;
-  text-align: end;
-}
-
-.commentBox {
+.commentsBox {
   padding-left: 20px;
   padding-right: 20px;
   margin: 0;
   width: 90%;
-  border-bottom: 2px solid rgb(38, 132, 104);
 }
 
-.commentBox:last-child {
+.commentsBox:last-child {
   border: none;
-}
-
-.commentAuthor {
-  font-size: 15px;
+  width: 90%;
 }
 
 .commentForm {
   width: 90%;
   margin: 20px;
+}
+
+.commentItem {
+  border-bottom: 2px solid rgb(38, 132, 104);
+  position: relative;
 }
 
 .commentInput {
@@ -65,45 +43,4 @@
   width: 80px;
   height: 25px;
   cursor: pointer;
-}
-
-.buttons {
-  display: flex;
-  justify-content: end;
-}
-
-.delete {
-  cursor: pointer;
-  margin-left: 10px;
-  margin-bottom: 20px;
-  height: 25px;
-}
-
-.editPost {
-  cursor: pointer;
-  height: 25px;
-}
-
-.editForm {
-  margin-top: 20px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 5px solid rgb(38, 132, 104);
-}
-
-.inputTitle {
-  height: 30px;
-  margin-bottom: 10px;
-}
-
-.inputText {
-  min-height: 200px;
-  margin-bottom: 10px;
-}
-
-.buttonSave {
-  height: 30px;
-  cursor: pointer;
-  margin-bottom: 20px;
 }

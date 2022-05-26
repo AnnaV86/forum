@@ -14,6 +14,7 @@ export const AddPost: FC = () => {
     text: '',
     author: '',
     answer: [],
+    likes: [],
   });
   const navigate = useNavigate();
   const login: any = localStorage.getItem('login');
@@ -37,6 +38,7 @@ export const AddPost: FC = () => {
       text: '',
       author: '',
       answer: [],
+      likes: [],
     });
   };
 

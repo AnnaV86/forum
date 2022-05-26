@@ -1,0 +1,68 @@
+.postContainer {
+  width: 95%;
+  border-bottom: 5px solid rgb(38, 132, 104);
+}
+
+.title {
+  margin: 10px 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 30px;
+}
+
+.text {
+  margin: 10px 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: start;
+}
+
+.author {
+  color: rgb(0, 110, 110);
+  font-weight: bold;
+  font-size: 20px;
+  padding-left: 20px;
+  margin: 10px 0;
+  width: 90%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.delete {
+  cursor: pointer;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  height: 25px;
+}
+
+.editPost {
+  cursor: pointer;
+  height: 25px;
+}
+
+.editForm {
+  margin-top: 20px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 5px solid rgb(38, 132, 104);
+}
+
+.inputTitle {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.inputText {
+  min-height: 200px;
+  margin-bottom: 10px;
+}
+
+.buttonSave {
+  height: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}

@@ -6,23 +6,51 @@
   border-radius: 10px;
   box-shadow: 4px 4px 3px rgb(84, 216, 161);
   border: 1px solid rgb(84, 216, 161);
-  padding: 15px 15px;
+  padding: 15px 20px;
   margin-bottom: 10px;
-  position: relative;
+  box-sizing: border-box;
+}
+
+.infoPost {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.like {
+  display: flex;
+}
+
+.likeButton {
+  border: none;
+  background-color: white;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
+  padding: 0;
 }
 
-.title {
-  margin: 0;
+.likeCount {
+  margin: 0 0 0 5px;
 }
 
-.text {
-  margin: 10px 0 0;
+.answer {
+  margin-left: 20px;
+  display: flex;
+}
+
+.answerCount {
+  margin: 0 0 0 5px;
 }
 
 .author {
-  position: relative;
-  top: 40px;
+  margin: 0;
   text-align: end;
 }
 
@@ -38,24 +66,4 @@
 .delete {
   cursor: pointer;
   margin-left: 10px;
-}
-
-.editForm {
-  display: flex;
-  flex-direction: column;
-}
-
-.inputTitle {
-  height: 30px;
-  margin-bottom: 10px;
-}
-
-.inputText {
-  min-height: 200px;
-  margin-bottom: 10px;
-}
-
-.buttonSave {
-  height: 30px;
-  cursor: pointer;
 }

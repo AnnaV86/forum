@@ -56,7 +56,6 @@ export const addNewPostFetch = async (newPost: IPost) => {
  */
 
 export const editPostFetch = async (post: IPost) => {
-  console.log(post);
   const response = await fetch(`http://localhost:3010/posts/${post.id}`, {
     method: 'PUT',
     headers: {

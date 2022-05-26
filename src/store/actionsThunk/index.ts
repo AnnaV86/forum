@@ -67,7 +67,6 @@ export function deletePostThunk(id: string) {
 export function editPostThunk(post: IPost) {
   return async (dispatch: any) => {
     const editPost = await editPostFetch(post);
-    console.log(editPost);
 
     dispatch(editPostAction(editPost));
   };
