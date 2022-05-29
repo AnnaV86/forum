@@ -1,10 +1,10 @@
-import { Navigate } from 'react-router-dom';
-import { IAnswer, IPost } from '..';
+import { IPost } from '..';
 import {
   addNewPostFetch,
   addUserFetch,
   deletePostFetch,
   editPostFetch,
+  getPostsFetch,
   getUsersFetch,
 } from '../../api';
 import { IAuthData } from '../../components/Auth/Auth';
@@ -15,10 +15,12 @@ import {
   deletePostAction,
   addPostAction,
   editPostAction,
+  getPostsAction,
 } from '../reducers/posts';
+import { Dispatch } from 'redux';
 
 export function getUserThunk(authData: IAuthData) {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     const usersDB: Array<IAuthData> = await getUsersFetch();
 
     const findUser = usersDB.find(
@@ -34,8 +36,15 @@ export function getUserThunk(authData: IAuthData) {
   };
 }
 
+export const getPostsThunk = () => {
+  return async (dispatch: Dispatch) => {
+    const posts = await getPostsFetch();
+    dispatch(getPostsAction(posts));
+  };
+};
+
 export function getNewUserThunk(userData: IUserData) {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     const usersDB: Array<IUserData> = await getUsersFetch();
 
     const findUser = usersDB.find((el) => el.login === userData.login);
@@ -49,7 +58,7 @@ export function getNewUserThunk(userData: IUserData) {
 }
 
 export function addNewPostThunk(newPost: IPost) {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     const post = await addNewPostFetch(newPost);
 
     dispatch(addPostAction(post));
@@ -57,7 +66,7 @@ export function addNewPostThunk(newPost: IPost) {
 }
 
 export function deletePostThunk(id: string) {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     await deletePostFetch(id);
 
     dispatch(deletePostAction(id));
@@ -65,9 +74,18 @@ export function deletePostThunk(id: string) {
 }
 
 export function editPostThunk(post: IPost) {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     const editPost = await editPostFetch(post);
 
     dispatch(editPostAction(editPost));
   };
 }
+
+export const loginUserThunk = (login: string) => {
+  return async (dispatch: Dispatch) => {
+    const usersDB: Array<IUserData> = await getUsersFetch();
+    const user: IUserData = usersDB.filter((el) => el.login === login)[0];
+
+    dispatch(loginUserAction(user));
+  };
+};

@@ -5,7 +5,7 @@ const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
 const EDIT_POST = 'EDIT_POST';
 
-export function getPostAction(postsArray: Array<IPost>) {
+export function getPostsAction(postsArray: Array<IPost>) {
   return {
     type: GET_POST,
     payload: postsArray,

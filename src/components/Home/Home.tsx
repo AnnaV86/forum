@@ -1,25 +1,27 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostsFetch } from '../../api';
+import { useNavigateControl } from '../../hooks/useNavigateControl';
 import { IStore, IPost } from '../../store';
-import { deletePostThunk } from '../../store/actionsThunk';
-import { getPostAction } from '../../store/reducers/posts';
+import {
+  deletePostThunk,
+  getPostsThunk,
+} from '../../store/actionsThunk';
+import { Path } from '../App/models/paths';
 import style from './home.module.css';
 import { Post } from './Post/Post';
 
 export const Home = () => {
-  const dispatch: any = useDispatch();
+  const dispatch = useDispatch();
   const postsList = useSelector((state: IStore) => state.postsReducer.posts);
 
   const deletePost = (id: string) => {
     dispatch(deletePostThunk(id));
   };
 
+  useNavigateControl(Path.home);
+
   useEffect(() => {
-    (async () => {
-      const posts = await getPostsFetch();
-      dispatch(getPostAction(posts));
-    })();
+    dispatch(getPostsThunk());
   }, []);
 
   return (

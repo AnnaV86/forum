@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import { getPostsFetch } from '../../../../api';
 import { IAnswer, IPost } from '../../../../store';
@@ -8,11 +8,12 @@ import { useDispatch } from 'react-redux';
 import { editPostThunk } from '../../../../store/actionsThunk';
 import { InfoPost } from './InfoPost/InfoPost';
 import { AnswerPost } from './AnswerPost/AnswerPost';
+import { useNavigateControl } from '../../../../hooks/useNavigateControl';
+import { Path } from '../../../App/models/paths';
 
 export const OpenPost = () => {
   const [text, setText] = useState('');
-  const dispatch: any = useDispatch();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { id } = useParams();
   const [post, setPost] = useState<IPost>({
     id: '',
@@ -30,13 +31,7 @@ export const OpenPost = () => {
     likes: [],
   });
 
-  useEffect(() => {
-    if (login) {
-      navigate(`/openPost/${id}`);
-    } else {
-      navigate('/auth');
-    }
-  }, [login]);
+  useNavigateControl(Path.openPost, id);
 
   useEffect(() => {
     (async () => {
@@ -49,7 +44,7 @@ export const OpenPost = () => {
   const answer = post.answer;
 
   const commentAnswer = (author: string) => {
-    setText(`${author}`);
+    setText(`${author},`);
   };
 
   const onClickOk = () => {
@@ -74,7 +69,7 @@ export const OpenPost = () => {
   };
 
   const updateAnswer = (comment: IAnswer) => {
-     const newPost = {
+    const newPost = {
       ...post,
       answer: post.answer.map((el) => (el.id === comment.id ? comment : el)),
     };
@@ -94,30 +89,6 @@ export const OpenPost = () => {
     }));
   };
 
-  const clickLike = (comment: any) => {
-    if (!comment.likes.includes(`${login}`)) {
-      const newPost: IPost = {
-        ...post,
-        answer: post.answer.map((el) =>
-          el === comment ? { ...el, likes: el.likes.concat(`${login}`) } : el
-        ),
-      };
-      setPost(newPost);
-      dispatch(editPostThunk(newPost));
-    } else {
-      const newPost = {
-        ...post,
-        answer: post.answer.map((el) =>
-          el === comment
-            ? { ...el, likes: el.likes.filter((name) => name !== `${login}`) }
-            : el
-        ),
-      };
-      setPost(newPost);
-      dispatch(editPostThunk(newPost));
-    }
-  };
-
   return (
     <div className={style.post}>
       <InfoPost post={post} />
@@ -127,7 +98,6 @@ export const OpenPost = () => {
             <AnswerPost
               comment={comment}
               commentAnswer={commentAnswer}
-              clickLike={clickLike}
               deleteAnswer={deleteAnswer}
               updateAnswer={updateAnswer}
             />

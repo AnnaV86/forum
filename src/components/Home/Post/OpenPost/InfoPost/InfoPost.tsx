@@ -12,7 +12,7 @@ interface InfoPostProps {
   post: IPost;
 }
 export const InfoPost: FC<InfoPostProps> = ({ post }) => {
-  const dispatch: any = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [postData, setPostData] = useState<IPost>(post);

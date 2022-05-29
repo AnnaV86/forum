@@ -1,13 +1,15 @@
+import { ICurrentUser } from '..';
+
 const LOGIN_USER = 'LOGIN_USER';
 
-export function loginUserAction(user: any) {
+export function loginUserAction(user: ICurrentUser) {
   return {
     type: LOGIN_USER,
     payload: user,
   };
 }
 
-export const initialState = {
+export const initialStateCurrentUser = {
   id: '',
   login: '',
   password: '',
@@ -16,7 +18,10 @@ export const initialState = {
   role: '',
 };
 
-export const currentUserReducer = (state = initialState, action: any) => {
+export const currentUserReducer = (
+  state = initialStateCurrentUser,
+  action: any
+) => {
   switch (action.type) {
     case LOGIN_USER: {
       return action.payload;

@@ -19,14 +19,16 @@ export interface IPost {
   likes: Array<string>;
 }
 
+export interface ICurrentUser {
+  login: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+}
+
 export interface IStore {
-  currentUserReducer: {
-    login: string;
-    password: string;
-    firstName: string;
-    lastName: string;
-    role: string;
-  };
+  currentUserReducer: ICurrentUser;
   messageReducer: string;
   postsReducer: {
     posts: Array<IPost>;

@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { IAnswer, IPost } from '../../../store';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { IPost } from '../../../store';
+import { useNavigate } from 'react-router-dom';
 import { AnswerIcon } from '../../../images/answerIcon';
 import { LikeFillIcon } from '../../../images/likeFillIcon';
 import { LikeLineIcon } from '../../../images/likeLineIcon';
@@ -14,7 +14,7 @@ interface IPostProps {
   deleteCard: any;
 }
 export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
-  const dispatch: any = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const login = localStorage.getItem('login');
   const [editPost, setEditPost] = useState(post);

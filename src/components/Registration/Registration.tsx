@@ -17,8 +17,9 @@ export interface IUserData {
 }
 
 export const Registration: FC = () => {
-  const dispatch: any = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const login = localStorage.getItem('login');
   const [userData, setUserData] = useState<IUserData>({
     id: '',
     login: '',
@@ -28,8 +29,6 @@ export const Registration: FC = () => {
     role: '',
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
-
-  const login = localStorage.getItem('login');
 
   const inputData = (evt: any) => {
     const { name, value } = evt.target;

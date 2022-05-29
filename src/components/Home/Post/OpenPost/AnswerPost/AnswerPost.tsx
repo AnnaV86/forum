@@ -7,7 +7,6 @@ import { LikeLineIcon } from '../../../../../images/likeLineIcon';
 interface IAnswerPost {
   comment: IAnswer;
   commentAnswer: any;
-  clickLike: any;
   deleteAnswer: any;
   updateAnswer: any;
 }
@@ -15,7 +14,6 @@ interface IAnswerPost {
 export const AnswerPost: FC<IAnswerPost> = ({
   comment,
   commentAnswer,
-  clickLike,
   deleteAnswer,
   updateAnswer,
 }) => {
@@ -34,6 +32,24 @@ export const AnswerPost: FC<IAnswerPost> = ({
   const clickSaveUpdate = () => {
     updateAnswer(updateComment);
     setToggle(false);
+  };
+
+  const clickLike = (comment: any) => {
+    if (!comment.likes.includes(`${login}`)) {
+      const newComment: IAnswer = {
+        ...updateComment,
+        likes: updateComment.likes.concat(`${login}`),
+      };
+      setUpdateComment(newComment);
+      updateAnswer(newComment);
+    } else {
+      const newComment = {
+        ...updateComment,
+        likes: updateComment.likes.filter((like) => like !== `${login}`),
+      };
+      setUpdateComment(newComment);
+      updateAnswer(newComment);
+    }
   };
 
   return (

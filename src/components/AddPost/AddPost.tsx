@@ -1,13 +1,15 @@
 import { nanoid } from 'nanoid';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useNavigateControl } from '../../hooks/useNavigateControl';
 import { IPost } from '../../store';
 import { addNewPostThunk } from '../../store/actionsThunk';
+import { Path } from '../App/models/paths';
 import style from './addPost.module.css';
 
 export const AddPost: FC = () => {
-  const dispatch: any = useDispatch();
+  const dispatch = useDispatch();
   const [newPost, setNewPost] = useState<IPost>({
     id: '',
     title: '',
@@ -42,11 +44,7 @@ export const AddPost: FC = () => {
     });
   };
 
-  useEffect(() => {
-    if (login) {
-      navigate('/addPost');
-    }
-  }, [login]);
+  useNavigateControl(Path.addPost);
 
   return (
     <div className={style.addPost}>

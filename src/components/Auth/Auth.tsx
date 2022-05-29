@@ -1,9 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useNavigateControl } from '../../hooks/useNavigateControl';
 import { IStore } from '../../store';
-import { getUserThunk } from '../../store/actionsThunk';
+import { getUserThunk, loginUserThunk } from '../../store/actionsThunk';
 import { addMessageAction } from '../../store/reducers/message';
+import { Path } from '../App/models/paths';
 import style from './auth.module.css';
 
 export interface IAuthData {
@@ -12,15 +14,13 @@ export interface IAuthData {
 }
 
 export const Auth: FC = () => {
-  const dispatch: any = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [authData, setAuthData] = useState<IAuthData>({
     login: '',
     password: '',
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
-
-  const login = localStorage.getItem('login');
 
   const inputData = (evt: any) => {
     const { name, value } = evt.target;
@@ -30,16 +30,11 @@ export const Auth: FC = () => {
   const enterAuth = async () => {
     const response = await dispatch(getUserThunk(authData));
     if (response === 'ok') {
+      dispatch(loginUserThunk(authData.login));
       navigate('/home');
     }
   };
-
-  useEffect(() => {
-    if (login) {
-      navigate('/home');
-    }
-  }, [login]);
-
+  useNavigateControl(Path.home);
   useEffect(() => {
     if (messageAuth !== '') {
       const timeOutId = setTimeout(() => {
