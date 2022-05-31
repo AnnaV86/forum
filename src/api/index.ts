@@ -1,5 +1,5 @@
 import { IUserData } from '../components/Registration/Registration';
-import { IPost } from '../store';
+import { ICurrentUser, IPost } from '../store';
 
 /**
  * Запрашиваем всех пользователей
@@ -24,6 +24,22 @@ export const addUserFetch = async (userData: IUserData) => {
   });
   const result = await response.json();
   return result;
+};
+
+/**
+ * Редактируем пользователя
+ */
+
+export const editUserFetch = async (user: ICurrentUser) => {
+  const response = await fetch(`http://localhost:3010/users/${user.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(user),
+  });
+
+  return await response.json();
 };
 
 /**

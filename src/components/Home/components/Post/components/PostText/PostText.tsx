@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { IPost } from '../../../../store';
+import { IPost } from '../../../../../../store';
 import style from './postText.module.css';
 
 interface IPostTextProps {

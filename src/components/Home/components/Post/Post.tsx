@@ -1,13 +1,14 @@
 import React, { FC, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { IPost } from '../../../store';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { AnswerIcon } from '../../../images/answerIcon';
-import { LikeFillIcon } from '../../../images/likeFillIcon';
-import { LikeLineIcon } from '../../../images/likeLineIcon';
-import { editPostThunk } from '../../../store/actionsThunk';
 import style from './post.module.css';
-import { PostText } from './PostText/PostText';
+import { PostText } from './components/PostText/PostText';
+import { IPost } from '../../../../store';
+import { editPostThunk } from '../../../../store/actionsThunk';
+import { LikeFillIcon } from '../../../../images/likeFillIcon';
+import { LikeLineIcon } from '../../../../images/likeLineIcon';
+import { AnswerIcon } from '../../../../images/answerIcon';
+import { currentUserInfo } from '../../../../selectors/currentUser';
 
 interface IPostProps {
   post: any;
@@ -20,6 +21,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
   const [editPost, setEditPost] = useState(post);
   const [activeLike, setActiveLike] = useState(false);
   const [toggle, setToggle] = useState(false);
+  const user = useSelector(currentUserInfo);
 
   const clickOpenPost = () => {
     navigate(`/openPost/${post.id}`);

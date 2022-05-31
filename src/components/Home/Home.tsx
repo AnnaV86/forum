@@ -2,13 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigateControl } from '../../hooks/useNavigateControl';
 import { IStore, IPost } from '../../store';
-import {
-  deletePostThunk,
-  getPostsThunk,
-} from '../../store/actionsThunk';
+import { deletePostThunk, getPostsThunk } from '../../store/actionsThunk';
 import { Path } from '../App/models/paths';
+import { Post } from './components/Post/Post';
 import style from './home.module.css';
-import { Post } from './Post/Post';
 
 export const Home = () => {
   const dispatch = useDispatch();

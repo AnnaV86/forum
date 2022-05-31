@@ -6,6 +6,7 @@ import { getNewUserThunk } from '../../store/actionsThunk';
 import { addMessageAction } from '../../store/reducers/message';
 import { IStore } from '../../store';
 import { useNavigate } from 'react-router-dom';
+import { Path } from '../App/models/paths';
 
 export interface IUserData {
   id: string;
@@ -40,12 +41,14 @@ export const Registration: FC = () => {
     }));
   };
 
-  const enterAuth = () => {
-    if (userData.login && userData.password) {
-      dispatch(getNewUserThunk(userData));
+  const enterAuth = async (evt: any) => {
+    evt.preventDefault();
+    const newUser: any = await dispatch(getNewUserThunk(userData));
+    if (newUser) {
+      navigate(Path.auth);
     }
-    dispatch(addMessageAction('Введите логин и пароль'));
   };
+
   useEffect(() => {
     if (messageAuth !== '') {
       const timeOutId = setTimeout(() => {
@@ -66,27 +69,66 @@ export const Registration: FC = () => {
   return (
     <div className={style.registration}>
       <div className={style.messageAuth}>{messageAuth}</div>
-      <div className={style.registrationForm}>
-        <input name='login' placeholder='Введите логин' onChange={inputData} />
+      <form className={style.registrationForm} onSubmit={enterAuth}>
+        <label>
+          Логин:{' '}
+          <input
+            type='text'
+            name='login'
+            placeholder='Введите логин'
+            onChange={inputData}
+            required
+            pattern='^[a-zA-Z0-9]+$'
+            title='Латинские буквы'
+            minLength={3}
+          />
+        </label>
+        <label>
+          Пароль:{' '}
+          <input
+            type='password'
+            name='password'
+            placeholder='Введите пароль'
+            onChange={inputData}
+            required
+            pattern='[0-9]\w+'
+            minLength={6}
+          />
+        </label>
+        <label>
+          Имя:{' '}
+          <input
+            type='text'
+            name='firstName'
+            placeholder='Введите имя'
+            onChange={inputData}
+            required
+            pattern='^[a-zA-ZА-Яа-яЁё\s]+$'
+            minLength={2}
+            title='Кириллица'
+          />
+        </label>
+        <label>
+          Фамилия:{' '}
+          <input
+            type='text'
+            name='lastName'
+            placeholder='Введите Фамилию'
+            onChange={inputData}
+            required
+            pattern='^[a-zA-ZА-Яа-яЁё\s]+$'
+            minLength={2}
+            title='Кириллица'
+          />
+        </label>
         <input
-          name='password'
-          placeholder='Введите пароль'
-          onChange={inputData}
+          className={style.inputButton}
+          name='submit'
+          type='submit'
+          // onSubmit={() => enterAuth}
+          value='Зарегистрироваться'
         />
-        <input
-          name='firstName'
-          placeholder='Введите имя'
-          onChange={inputData}
-        />
-        <input
-          name='lastName'
-          placeholder='Введите Фамилию'
-          onChange={inputData}
-        />
-        <button className={style.inputButton} type='button' onClick={enterAuth}>
-          Войти
-        </button>
-      </div>
+      </form>
     </div>
   );
 };

@@ -19,7 +19,7 @@
 }
 
 .buttonUpdateAnswer {
-  background-image: url(../../../../../images/pen_2_fill.svg);
+  background-image: url(../../../../../../../../images/pen_2_fill.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-color: white;
@@ -33,7 +33,7 @@
 }
 
 .buttonDeleteAnswer {
-  background-image: url(../../../../../images/delete_line.svg);
+  background-image: url(../../../../../../../../images/delete_line.svg);
   background-repeat: no-repeat;
   background-size: contain;
   background-color: white;

@@ -1,6 +1,7 @@
 {
   "users": [
     {
+      "id": "9tYsjNkKwdw_53nChdfgdf",
       "login": "Anna",
       "password": "1",
       "firstName": "Анна",
@@ -8,8 +9,9 @@
       "role": "admin"
     },
     {
+      "id": "9tYsjewrtrewrtrt",
       "login": "Ivan",
-      "password": "1",
+      "password": "2",
       "firstName": "Иван",
       "lastName": "Видутин",
       "role": "user"
@@ -29,62 +31,6 @@
       "firstName": "Margo",
       "lastName": "Vidutina",
       "role": "user"
-    },
-    {
-      "id": "Kgfe63XphQgrLREHOChoS",
-      "login": "Margo",
-      "password": "3",
-      "firstName": "3",
-      "lastName": "3",
-      "role": "user"
-    },
-    {
-      "id": "klSO-Ohps9HjS6c2b2Tab",
-      "login": "Mirka",
-      "password": "1",
-      "firstName": "Мирка",
-      "lastName": "Видутин",
-      "role": "user"
-    },
-    {
-      "id": "SqnYYPxEk96pLMYrbDbAo",
-      "login": "Mur mur",
-      "password": "1",
-      "firstName": "d",
-      "lastName": "d",
-      "role": "user"
-    },
-    {
-      "id": "McYmMLxib4rkEwwe8N1mp",
-      "login": "Mur mit",
-      "password": "1",
-      "firstName": "r",
-      "lastName": "r",
-      "role": "user"
-    },
-    {
-      "id": "3-TMbyPDb2dbTVnyIc059",
-      "login": "An",
-      "password": "1",
-      "firstName": "r",
-      "lastName": "r",
-      "role": "user"
-    },
-    {
-      "id": "60e80BLJ80gLYDrgJob9i",
-      "login": "Ano",
-      "password": "1",
-      "firstName": "l",
-      "lastName": "oi",
-      "role": "user"
-    },
-    {
-      "id": "Q8K-VWPf149lBxl1Xj1jj",
-      "login": "Oergfg",
-      "password": "fghgf",
-      "firstName": "ghfgh",
-      "lastName": "gfhgfh",
-      "role": "user"
     }
   ],
   "posts": [
@@ -98,30 +44,22 @@
           "text": "Отличный пост",
           "id": 1,
           "author": "Маша",
-          "likes": [
-            "Ivan",
-            "Anna"
-          ]
+          "likes": ["Ivan", "Anna"]
         },
         {
           "text": "сойдет",
           "id": 2,
           "author": "Миша",
-          "likes": [
-            "Anna"
-          ]
+          "likes": ["Anna"]
         },
         {
           "id": "IhnP2xe8eQpI0P3_-tXhf",
           "text": "Мой коммент",
           "author": "Anna",
-          "likes": [
-            "Anna",
-            "Ivan"
-          ]
+          "likes": ["Anna", "Ivan"]
         }
       ],
-      "likes": []
+      "likes": ["Anna"]
     },
     {
       "id": "bJR3_SeeP85uO79rUkcn3",
@@ -133,36 +71,22 @@
           "text": "Хороший пост",
           "id": 3,
           "author": "Маша",
-          "likes": [
-            "Anna",
-            "Mir"
-          ]
+          "likes": ["Anna", "Mir"]
         },
         {
           "text": "Ок",
           "id": 4,
           "author": "Миша",
-          "likes": [
-            "Ivan",
-            "Anna",
-            "Mir"
-          ]
+          "likes": ["Ivan", "Anna", "Mir"]
         },
         {
           "text": "пфффф",
           "id": 5,
           "author": "Федя",
-          "likes": [
-            "Ivan",
-            "Anna",
-            "Mir"
-          ]
+          "likes": ["Ivan", "Anna", "Mir"]
         }
       ],
-      "likes": [
-        "Ivan",
-        "Anna"
-      ]
+      "likes": ["Ivan", "Anna"]
     },
     {
       "id": "d6vIvzpaNr5fkfxwMJfTL",
@@ -180,24 +104,16 @@
           "id": "ukYsU8NSg4gMo2E0bhKrc",
           "text": "Семен, lol",
           "author": "Anna",
-          "likes": [
-            "Ivan",
-            "Anna"
-          ]
+          "likes": ["Ivan", "Anna"]
         },
         {
           "id": "323HBklg77mETwpyCRODT",
           "text": "Семен, jkhgkjsfdhgkjhfsg",
           "author": "Anna",
-          "likes": [
-            "Ivan"
-          ]
+          "likes": ["Ivan"]
         }
       ],
-      "likes": [
-        "Ivan",
-        "Mir"
-      ]
+      "likes": ["Ivan", "Mir"]
     },
     {
       "id": "lqDwM938IPwsvCGVabB97",
@@ -209,27 +125,19 @@
           "id": "YnpRUQ8d5te_LvXrCB2x6",
           "text": " Хозяйка руками всплеснула: - Как так из топора кашу сварить? - А вот как, дай-ка котёл. Старуха принесла котёл, солдат вымыл топор, опустил в котёл, налил воды и поставил на огонь. Старуха на солдата глядит, глаз не сводит.",
           "author": "Anna",
-          "likes": [
-            "Anna",
-            "Mir"
-          ]
+          "likes": ["Anna", "Mir"]
         },
         {
           "id": "Q_Sb1DcHGshA8Cuv4Ln_F",
           "text": "нечего. - Ну, нет так нет,- солдат говорит. Тут он приметил под лавкой топор. - Коли нет ничего иного, можно сварить кашу и из топора.",
           "author": "Anna",
-          "likes": [
-            "Mir"
-          ]
+          "likes": ["Mir"]
         },
         {
           "id": "KIjCBJunWIv8sKPSBBXeT",
           "text": "hjghjghjghjghj",
           "author": "Anna",
-          "likes": [
-            "Ivan",
-            "Anna"
-          ]
+          "likes": ["Ivan", "Anna"]
         },
         {
           "id": "seClmapTawRXf27BbVDxC",
@@ -238,10 +146,7 @@
           "likes": []
         }
       ],
-      "likes": [
-        "Anna",
-        "Mir"
-      ]
+      "likes": ["Anna", "Mir"]
     },
     {
       "id": "aAC8DNTsNDaThQhzjBYP4",
@@ -253,9 +158,7 @@
           "id": "NiwyFDmKeA53IRxRDzSBQ",
           "text": "Старый солдат шёл на побывку. Притомился в пути, есть хочется. Дошёл до деревни, постучал в крайнюю избу: - Пустите отдохнуть дорожного человека! Дверь отворила старуха. - Заходи, служивый. - А нет ли у тебя, хозяюшка, перекусить чего? У старухи всего вдоволь, а солдата поскупилась накормить, прикинулась сиротой. - Ох, добрый человек, и сама сегодня ещё ничего не ела: нечего. - Ну, нет так нет,- солдат говорит. Тут он приметил под лавкой топор. - Коли нет ничего иного, можно сварить кашу и из топора.  Хозяйка руками всплеснула: - Как так из топора кашу сварить? - А вот как, дай-ка котёл. Старуха принесла котёл, солдат вымыл топор, опустил в котёл, налил воды и поставил на огонь. Старуха на солдата глядит, глаз не сводит.",
           "author": "Mir",
-          "likes": [
-            "Ivan"
-          ]
+          "likes": ["Ivan"]
         },
         {
           "id": "kLpwgbXGhRYneLOjlOI_8",
@@ -270,14 +173,6 @@
           "likes": []
         }
       ],
-      "likes": []
-    },
-    {
-      "id": "5wrGuFjN6rC8mj9JsAjb1",
-      "title": "попропрор22222",
-      "text": "пропропрнлпродлодлждлждлолорглролроолр22222",
-      "author": "Ivan",
-      "answer": [],
       "likes": []
     }
   ]

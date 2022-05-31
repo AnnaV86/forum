@@ -20,6 +20,7 @@ export interface IPost {
 }
 
 export interface ICurrentUser {
+  id: string;
   login: string;
   password: string;
   firstName: string;

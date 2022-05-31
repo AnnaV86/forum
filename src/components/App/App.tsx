@@ -5,11 +5,11 @@ import { Home } from '../Home/Home';
 import { NavBar } from '../NavBar/NavBar';
 import { Registration } from '../Registration/Registration';
 import { Welcome } from '../Welcome/Welcome';
-import { OpenPost } from '../Home/Post/OpenPost/OpenPost';
 import { Profile } from '../Profile/Profile';
 import { useGetLoginInfo } from '../../hooks/useGetLoginInfo';
 import { AuthControl } from './components/authControl';
 import { Path } from './models/paths';
+import { OpenPost } from '../Home/components/Post/components/OpenPost/OpenPost';
 
 export const App = () => {
   useGetLoginInfo();

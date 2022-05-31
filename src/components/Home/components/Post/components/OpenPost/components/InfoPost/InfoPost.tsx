@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { IPost } from '../../../../../store';
+import style from './infoPost.module.css';
+import { IPost } from '../../../../../../../../store';
 import {
   deletePostThunk,
   editPostThunk,
-} from '../../../../../store/actionsThunk';
-import style from './infoPost.module.css';
+} from '../../../../../../../../store/actionsThunk';
 
 interface InfoPostProps {
   post: IPost;

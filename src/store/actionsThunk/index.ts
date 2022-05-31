@@ -1,15 +1,16 @@
-import { IPost } from '..';
+import { ICurrentUser, IPost } from '..';
 import {
   addNewPostFetch,
   addUserFetch,
   deletePostFetch,
   editPostFetch,
+  editUserFetch,
   getPostsFetch,
   getUsersFetch,
 } from '../../api';
 import { IAuthData } from '../../components/Auth/Auth';
 import { IUserData } from '../../components/Registration/Registration';
-import { loginUserAction } from '../reducers/currentUser';
+import { editUserAction, loginUserAction } from '../reducers/currentUser';
 import { addMessageAction } from '../reducers/message';
 import {
   deletePostAction,
@@ -29,10 +30,17 @@ export function getUserThunk(authData: IAuthData) {
     if (findUser) {
       localStorage.setItem('login', findUser.login);
       return 'ok';
-      // dispatch(loginUserAction(findUser));
     } else {
       dispatch(addMessageAction('Вы ввели не правильный логин или пароль'));
     }
+  };
+}
+
+export function updateUserThunk(user: ICurrentUser) {
+  return async (dispatch: Dispatch) => {
+    const editUser = await editUserFetch(user);
+
+    dispatch(editUserAction(editUser));
   };
 }
 
@@ -52,7 +60,8 @@ export function getNewUserThunk(userData: IUserData) {
       dispatch(addMessageAction('Данный логин уже занят'));
     } else {
       const newUser = await addUserFetch(userData);
-      dispatch(loginUserAction(newUser));
+      return newUser;
+      // dispatch(loginUserAction(newUser));
     }
   };
 }

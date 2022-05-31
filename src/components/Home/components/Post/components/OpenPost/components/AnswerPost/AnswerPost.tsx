@@ -1,8 +1,8 @@
 import React, { FC, useState } from 'react';
+import { LikeFillIcon } from '../../../../../../../../images/likeFillIcon';
+import { LikeLineIcon } from '../../../../../../../../images/likeLineIcon';
+import { IAnswer } from '../../../../../../../../store';
 import style from './answerPost.module.css';
-import { IAnswer } from '../../../../../store';
-import { LikeFillIcon } from '../../../../../images/likeFillIcon';
-import { LikeLineIcon } from '../../../../../images/likeLineIcon';
 
 interface IAnswerPost {
   comment: IAnswer;

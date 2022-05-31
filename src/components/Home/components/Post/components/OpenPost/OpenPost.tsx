@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
-import { getPostsFetch } from '../../../../api';
-import { IAnswer, IPost } from '../../../../store';
 import style from './openPost.module.css';
 import { useDispatch } from 'react-redux';
-import { editPostThunk } from '../../../../store/actionsThunk';
-import { InfoPost } from './InfoPost/InfoPost';
-import { AnswerPost } from './AnswerPost/AnswerPost';
-import { useNavigateControl } from '../../../../hooks/useNavigateControl';
-import { Path } from '../../../App/models/paths';
+import { InfoPost } from './components/InfoPost/InfoPost';
+import { AnswerPost } from './components/AnswerPost/AnswerPost';
+import { IAnswer, IPost } from '../../../../../../store';
+import { Path } from '../../../../../App/models/paths';
+import { useNavigateControl } from '../../../../../../hooks/useNavigateControl';
+import { getPostsFetch } from '../../../../../../api';
+import { editPostThunk } from '../../../../../../store/actionsThunk';
 
 export const OpenPost = () => {
   const [text, setText] = useState('');
