@@ -9,6 +9,7 @@ import { LikeFillIcon } from '../../../../images/likeFillIcon';
 import { LikeLineIcon } from '../../../../images/likeLineIcon';
 import { AnswerIcon } from '../../../../images/answerIcon';
 import { currentUserInfo } from '../../../../selectors/currentUser';
+import { AdminPage } from './components/AdminPage/AdminPage';
 
 interface IPostProps {
   post: any;
@@ -22,6 +23,8 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
   const [activeLike, setActiveLike] = useState(false);
   const [toggle, setToggle] = useState(false);
   const user = useSelector(currentUserInfo);
+  const [popupOpen, setPopupOpen] = useState(false);
+  const [userBan, setUserBan] = useState('');
 
   const clickOpenPost = () => {
     navigate(`/openPost/${post.id}`);
@@ -35,6 +38,17 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
     setEditPost(updatePost);
     dispatch(editPostThunk(updatePost));
     setToggle(false);
+  };
+
+  const banUser = () => {
+    const user = editPost.author;
+    setPopupOpen(true);
+    setUserBan(user);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+    setUserBan('');
   };
 
   const clickLike = () => {
@@ -84,13 +98,27 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
             <p className={style.answerCount}>{editPost.answer.length}</p>
           </div>{' '}
         </div>
-
-        <p className={style.author}>{editPost.author}</p>
+        {user.role === 'admin' ? (
+          <p className={style.authorAdmin} onClick={() => banUser()}>
+            {editPost.author}
+          </p>
+        ) : (
+          <p className={style.author}>{editPost.author}</p>
+        )}
       </div>
 
       <button type='button' className={style.discuss} onClick={clickOpenPost}>
         Обсудить
       </button>
+      {user.role === 'admin' && (
+        <button
+          type='button'
+          className={style.delete}
+          onClick={() => deleteCard(post.id)}
+        >
+          Удалить
+        </button>
+      )}
       {editPost.author === login && (
         <>
           <button
@@ -100,14 +128,19 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
           >
             Редактировать
           </button>
-          <button
-            type='button'
-            className={style.delete}
-            onClick={() => deleteCard(post.id)}
-          >
-            Удалить
-          </button>
+          {user.role !== 'admin' && (
+            <button
+              type='button'
+              className={style.delete}
+              onClick={() => deleteCard(post.id)}
+            >
+              Удалить
+            </button>
+          )}
         </>
+      )}
+      {popupOpen && (
+        <AdminPage banUserLogin={userBan} closePopup={closePopup} />
       )}
     </div>
   );

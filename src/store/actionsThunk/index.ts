@@ -10,7 +10,11 @@ import {
 } from '../../api';
 import { IAuthData } from '../../components/Auth/Auth';
 import { IUserData } from '../../components/Registration/Registration';
-import { editUserAction, loginUserAction } from '../reducers/currentUser';
+import {
+  banUserAction,
+  editUserAction,
+  loginUserAction,
+} from '../reducers/currentUser';
 import { addMessageAction } from '../reducers/message';
 import {
   deletePostAction,
@@ -22,13 +26,15 @@ import { Dispatch } from 'redux';
 
 export function getUserThunk(authData: IAuthData) {
   return async (dispatch: Dispatch) => {
-    const usersDB: Array<IAuthData> = await getUsersFetch();
+    const usersDB: Array<ICurrentUser> = await getUsersFetch();
 
     const findUser = usersDB.find(
       (el) => el.login === authData.login && el.password === authData.password
     );
     if (findUser) {
       localStorage.setItem('login', findUser.login);
+      localStorage.setItem('role', findUser.role);
+      localStorage.setItem('banTime', String(findUser.banTime));
       return 'ok';
     } else {
       dispatch(addMessageAction('Вы ввели не правильный логин или пароль'));
@@ -41,6 +47,20 @@ export function updateUserThunk(user: ICurrentUser) {
     const editUser = await editUserFetch(user);
 
     dispatch(editUserAction(editUser));
+  };
+}
+
+export function banUserThunk(login: string, day: number) {
+  return async (dispatch: Dispatch) => {
+    const currentDay = new Date();
+    const banTime = currentDay.getTime() + day * 86400000;
+    const usersDB: Array<ICurrentUser> = await getUsersFetch();
+    const findUser = usersDB.find((el) => el.login === login);
+    if (findUser) {
+      const newStatusBanUser = { ...findUser, banTime: banTime };
+      const editUser = await editUserFetch(newStatusBanUser);
+      dispatch(banUserAction(editUser));
+    }
   };
 }
 

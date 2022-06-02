@@ -67,3 +67,10 @@
   cursor: pointer;
   margin-left: 10px;
 }
+
+.authorAdmin {
+  color: blue;
+  margin: 0;
+  text-align: end;
+  cursor: pointer;
+}

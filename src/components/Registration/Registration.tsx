@@ -15,6 +15,7 @@ export interface IUserData {
   firstName: string;
   lastName: string;
   role: string;
+  banTime: number;
 }
 
 export const Registration: FC = () => {
@@ -28,6 +29,7 @@ export const Registration: FC = () => {
     firstName: '',
     lastName: '',
     role: '',
+    banTime: 0
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
 
@@ -38,6 +40,7 @@ export const Registration: FC = () => {
       [name]: value,
       role: 'user',
       id: nanoid(),
+      status: 'active',
     }));
   };
 
@@ -125,7 +128,6 @@ export const Registration: FC = () => {
           className={style.inputButton}
           name='submit'
           type='submit'
-          // onSubmit={() => enterAuth}
           value='Зарегистрироваться'
         />
       </form>

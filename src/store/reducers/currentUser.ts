@@ -17,6 +17,13 @@ export function editUserAction(user: ICurrentUser) {
   };
 }
 
+export function banUserAction(user: ICurrentUser) {
+  return {
+    type: UPDATE_USER,
+    payload: user,
+  };
+}
+
 export const initialStateCurrentUser = {
   id: '',
   login: '',
@@ -24,6 +31,7 @@ export const initialStateCurrentUser = {
   firstName: '',
   lastName: '',
   role: '',
+  banTime: 0,
 };
 
 export const currentUserReducer = (
@@ -37,8 +45,7 @@ export const currentUserReducer = (
     case UPDATE_USER: {
       return {
         ...state,
-        firstName: action.payload.firstName,
-        lastName: action.payload.lastName,
+        role: action.payload.role,
       };
     }
     default:

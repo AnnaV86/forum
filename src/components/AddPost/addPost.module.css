@@ -21,9 +21,20 @@
 
 .inputTitle {
   margin-bottom: 10px;
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 3px rgb(84, 216, 161);
+  border: 1px solid rgb(84, 216, 161);
+  min-height: 50px;
 }
 
 .text {
+  background-color: rgb(255, 255, 255);
+  list-style: none;
+  border-radius: 10px;
+  box-shadow: 4px 4px 3px rgb(84, 216, 161);
+  border: 1px solid rgb(84, 216, 161);
   width: 800px;
   min-height: 200px;
   margin-bottom: 10px;

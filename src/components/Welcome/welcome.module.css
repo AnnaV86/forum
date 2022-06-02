@@ -8,7 +8,25 @@
   color: white;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .linkWelcome {
   text-decoration: none;
   color: rgb(124, 255, 227);
+}
+
+.imgBan {
+  width: 400px;
+  height: 400px;
+  background-image: url(../../images/картинкаБан.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.text {
+  text-align: center;
 }

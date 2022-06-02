@@ -26,6 +26,7 @@ export interface ICurrentUser {
   firstName: string;
   lastName: string;
   role: string;
+  banTime: number;
 }
 
 export interface IStore {

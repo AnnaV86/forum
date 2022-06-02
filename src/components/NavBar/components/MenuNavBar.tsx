@@ -15,6 +15,8 @@ export const MenuNavBar = () => {
 
   const outUser = () => {
     localStorage.removeItem('login');
+    localStorage.removeItem('role');
+    localStorage.removeItem('banTime');
     dispatch(loginUserAction(initialStateCurrentUser));
   };
 

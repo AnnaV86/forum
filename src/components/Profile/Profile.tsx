@@ -24,6 +24,7 @@ export const Profile = () => {
     firstName: '',
     lastName: '',
     role: '',
+    banTime: 0,
   });
 
   useNavigateControl(Path.profile);
@@ -35,6 +36,7 @@ export const Profile = () => {
       [name]: value,
     }));
   };
+
   const inputOldPassword = (evt: any) => {
     setOldPassword(evt.target.value);
   };
@@ -43,7 +45,8 @@ export const Profile = () => {
     setNewPassword(evt.target.value);
   };
 
-  const saveProfile = () => {
+  const saveProfile = (evt: any) => {
+    evt.preventDefault();
     dispatch(updateUserThunk(userData));
     setToggle(false);
   };
@@ -73,7 +76,6 @@ export const Profile = () => {
       <h1 className={style.title}>Мой профиль</h1>
       {toggle ? (
         <UpdateProfile
-          userData={userData}
           inputData={inputData}
           saveProfile={saveProfile}
           inputOldPassword={inputOldPassword}

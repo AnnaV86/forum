@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { currentUserInfo } from '../../../../selectors/currentUser';
 import { ICurrentUser, IStore } from '../../../../store';
 import { addMessageAction } from '../../../../store/reducers/message';
 import style from './updateProfile.module.css';
 
 interface UpdateProfileProps {
-  userData: ICurrentUser;
   inputData: any;
   saveProfile: any;
   inputOldPassword: any;
@@ -16,7 +16,6 @@ interface UpdateProfileProps {
 }
 
 export const UpdateProfile: FC<UpdateProfileProps> = ({
-  userData,
   inputData,
   saveProfile,
   inputOldPassword,
@@ -28,10 +27,12 @@ export const UpdateProfile: FC<UpdateProfileProps> = ({
   const dispatch = useDispatch();
   const [togglePassword, setTogglePassword] = useState(false);
   const [buttonText, setButtonText] = useState('Изменить пароль');
+  const user = useSelector(currentUserInfo);
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
 
-  const savePassword = () => {
-    if (oldPassword === userData.password) {
+  const savePassword = (evt: any) => {
+    evt.preventDefault();
+    if (oldPassword === user.password) {
       saveNewPassword();
       setButtonText('Пароль изменен');
       setTogglePassword(false);
@@ -53,34 +54,41 @@ export const UpdateProfile: FC<UpdateProfileProps> = ({
 
   return (
     <>
-      <div className={style.wrapper}>
+      <form className={style.wrapper} onSubmit={saveProfile}>
         <input
           type='text'
           name='firstName'
-          value={userData.firstName}
+          defaultValue={user.firstName}
           className={style.inputText}
           placeholder='Имя'
           onChange={inputData}
+          required
+          pattern='^[a-zA-ZА-Яа-яЁё\s]+$'
+          minLength={2}
+          title='Кириллица'
         />
         <input
           type='text'
           name='lastName'
-          value={userData.lastName}
+          defaultValue={user.lastName}
           className={style.inputText}
           placeholder='Фамилия'
           onChange={inputData}
+          required
+          pattern='^[a-zA-ZА-Яа-яЁё\s]+$'
+          minLength={2}
+          title='Кириллица'
         />
-        <button
-          type='button'
+        <input
+          type='submit'
           className={style.button}
-          onClick={() => saveProfile()}
-        >
-          Сохранить
-        </button>
-      </div>
+          name='submit'
+          value='Сохранить'
+        />
+      </form>
       {togglePassword ? (
         <>
-          <div className={style.wrapper}>
+          <form className={style.wrapper} onSubmit={savePassword}>
             <div className={style.messageAuth}>{messageAuth}</div>
             <input
               type='password'
@@ -97,15 +105,17 @@ export const UpdateProfile: FC<UpdateProfileProps> = ({
               className={style.inputText}
               placeholder='Введите новый пароль'
               onChange={inputNewPassword}
+              required
+              pattern='[0-9]\w+'
+              minLength={6}
             />
-            <button
-              type='button'
+            <input
+              type='submit'
               className={style.button}
-              onClick={() => savePassword()}
-            >
-              Сохранить
-            </button>
-          </div>
+              name='submit'
+              value='Сохранить'
+            />
+          </form>
         </>
       ) : (
         <>
