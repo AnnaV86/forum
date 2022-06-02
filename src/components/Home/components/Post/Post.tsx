@@ -10,6 +10,7 @@ import { LikeLineIcon } from '../../../../images/likeLineIcon';
 import { AnswerIcon } from '../../../../images/answerIcon';
 import { currentUserInfo } from '../../../../selectors/currentUser';
 import { AdminPage } from './components/AdminPage/AdminPage';
+import { PopupDelete } from './components/PopupDelete/PopupDelete';
 
 interface IPostProps {
   post: any;
@@ -24,6 +25,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
   const [toggle, setToggle] = useState(false);
   const user = useSelector(currentUserInfo);
   const [popupOpen, setPopupOpen] = useState(false);
+  const [popupDeleteOpen, setPopupDeleteOpen] = useState(false);
   const [userBan, setUserBan] = useState('');
 
   const clickOpenPost = () => {
@@ -49,6 +51,10 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
   const closePopup = () => {
     setPopupOpen(false);
     setUserBan('');
+  };
+
+  const closePopupDelete = () => {
+    setPopupDeleteOpen(false);
   };
 
   const clickLike = () => {
@@ -100,7 +106,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
         </div>
         {user.role === 'admin' ? (
           <p className={style.authorAdmin} onClick={() => banUser()}>
-            {editPost.author}
+            {editPost.login}
           </p>
         ) : (
           <p className={style.author}>{editPost.author}</p>
@@ -114,7 +120,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
         <button
           type='button'
           className={style.delete}
-          onClick={() => deleteCard(post.id)}
+          onClick={() => setPopupDeleteOpen(true)}
         >
           Удалить
         </button>
@@ -132,7 +138,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
             <button
               type='button'
               className={style.delete}
-              onClick={() => deleteCard(post.id)}
+              onClick={() => setPopupDeleteOpen(true)}
             >
               Удалить
             </button>
@@ -141,6 +147,13 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
       )}
       {popupOpen && (
         <AdminPage banUserLogin={userBan} closePopup={closePopup} />
+      )}
+      {popupDeleteOpen && (
+        <PopupDelete
+          id={post.id}
+          deleteCard={deleteCard}
+          closePopupDelete={closePopupDelete}
+        />
       )}
     </div>
   );

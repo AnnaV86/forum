@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 import style from './openPost.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { InfoPost } from './components/InfoPost/InfoPost';
 import { AnswerPost } from './components/AnswerPost/AnswerPost';
 import { IAnswer, IPost } from '../../../../../../store';
@@ -10,6 +10,7 @@ import { Path } from '../../../../../App/models/paths';
 import { useNavigateControl } from '../../../../../../hooks/useNavigateControl';
 import { getPostsFetch } from '../../../../../../api';
 import { editPostThunk } from '../../../../../../store/actionsThunk';
+import { currentUserInfo } from '../../../../../../selectors/currentUser';
 
 export const OpenPost = () => {
   const [text, setText] = useState('');
@@ -20,6 +21,7 @@ export const OpenPost = () => {
     title: '',
     text: '',
     author: '',
+    login: '',
     answer: [],
     likes: [],
   });
@@ -28,10 +30,12 @@ export const OpenPost = () => {
     id: '',
     text: '',
     author: '',
+    login: '',
     likes: [],
   });
 
   useNavigateControl(Path.openPost, id);
+  const user = useSelector(currentUserInfo);
 
   useEffect(() => {
     (async () => {
@@ -84,7 +88,8 @@ export const OpenPost = () => {
     setNewAnswer((prev: any) => ({
       ...prev,
       text: value,
-      author: login,
+      author: `${user.firstName} ${user.lastName}`,
+      login: login,
       id: nanoid(),
     }));
   };

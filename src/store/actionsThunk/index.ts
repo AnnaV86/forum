@@ -33,7 +33,6 @@ export function getUserThunk(authData: IAuthData) {
     );
     if (findUser) {
       localStorage.setItem('login', findUser.login);
-      localStorage.setItem('role', findUser.role);
       return 'ok';
     } else {
       dispatch(addMessageAction('Вы ввели не правильный логин или пароль'));

@@ -28,7 +28,7 @@
   border: none;
   position: absolute;
   right: 40px;
-  top: 1px;
+  top: 10px;
   cursor: pointer;
 }
 
@@ -42,7 +42,7 @@
   border: none;
   position: absolute;
   right: 10px;
-  top: 1px;
+  top: 10px;
   cursor: pointer;
 }
 
@@ -62,4 +62,17 @@
 
 .likeCount {
   margin: 0 0 0 5px;
+}
+
+.wrapper {
+  display: flex;
+}
+.commentLogin {
+  color: blue;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+  /* position: absolute;
+  top: 1px;
+  right: 20px; */
 }

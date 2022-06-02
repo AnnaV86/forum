@@ -7,6 +7,7 @@ export interface IAnswer {
   text: string;
   id: string;
   author: string;
+  login: string;
   likes: Array<string>;
 }
 
@@ -15,6 +16,7 @@ export interface IPost {
   title: string;
   text: string;
   author: string;
+  login: string;
   answer: Array<IAnswer>;
   likes: Array<string>;
 }

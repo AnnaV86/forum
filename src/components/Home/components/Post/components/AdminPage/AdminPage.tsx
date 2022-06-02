@@ -46,6 +46,10 @@ export const AdminPage: FC<IAdminPageProps> = ({
           </label>
           <input type='submit' value='Заблокировать' className={style.button} />
         </form>
+        <button
+          className={style.closeButton}
+          onClick={() => closePopup()}
+        ></button>
       </div>
     </div>
   );

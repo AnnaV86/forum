@@ -1,20 +1,23 @@
 import { nanoid } from 'nanoid';
 import React, { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useNavigateControl } from '../../hooks/useNavigateControl';
+import { currentUserInfo } from '../../selectors/currentUser';
 import { IPost } from '../../store';
 import { addNewPostThunk } from '../../store/actionsThunk';
 import { Path } from '../App/models/paths';
 import style from './addPost.module.css';
 
 export const AddPost: FC = () => {
+  const user = useSelector(currentUserInfo);
   const dispatch = useDispatch();
   const [newPost, setNewPost] = useState<IPost>({
     id: '',
     title: '',
     text: '',
     author: '',
+    login: '',
     answer: [],
     likes: [],
   });
@@ -26,7 +29,8 @@ export const AddPost: FC = () => {
     setNewPost((prev) => ({
       ...prev,
       [name]: value,
-      author: login,
+      author: `${user.firstName} ${user.lastName}`,
+      login: login,
       id: nanoid(),
     }));
   };
@@ -39,6 +43,7 @@ export const AddPost: FC = () => {
       title: '',
       text: '',
       author: '',
+      login: '',
       answer: [],
       likes: [],
     });
