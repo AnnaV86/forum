@@ -10,9 +10,9 @@ import style from './answerPost.module.css';
 
 interface IAnswerPost {
   comment: IAnswer;
-  commentAnswer: any;
-  deleteAnswer: any;
-  updateAnswer: any;
+  commentAnswer: (author: string) => void;
+  deleteAnswer: (id: string) => void;
+  updateAnswer: (comment: IAnswer) => void;
 }
 
 export const AnswerPost: FC<IAnswerPost> = ({
@@ -21,17 +21,17 @@ export const AnswerPost: FC<IAnswerPost> = ({
   deleteAnswer,
   updateAnswer,
 }) => {
-  const [updateComment, setUpdateComment] = useState(comment);
-  const login = localStorage.getItem('login');
+  const [updateComment, setUpdateComment] = useState<IAnswer>(comment);
+  const login = localStorage.getItem('login') || '';
   const user = useSelector(currentUserInfo);
   const [toggle, setToggle] = useState(false);
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupDeleteOpen, setPopupDeleteOpen] = useState(false);
-  const [userBan, setUserBan] = useState('');
+  const [userBan, setUserBan] = useState<string>('');
 
-  const inputPost = (evt: any) => {
+  const inputPost = (evt: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { name, value } = evt.target;
-    setUpdateComment((prev: any) => ({
+    setUpdateComment((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -57,7 +57,7 @@ export const AnswerPost: FC<IAnswerPost> = ({
     setToggle(false);
   };
 
-  const clickLike = (comment: any) => {
+  const clickLike = (comment: IAnswer) => {
     if (!comment.likes.includes(`${login}`)) {
       const newComment: IAnswer = {
         ...updateComment,
@@ -95,7 +95,7 @@ export const AnswerPost: FC<IAnswerPost> = ({
             </h2>
           </div>
           {user.role === 'admin' && (
-            <h2 className={style.commentLogin} onClick={() => banUser()}>
+            <h2 className={style.commentLogin} onClick={banUser}>
               ({comment.login})
             </h2>
           )}
@@ -112,7 +112,7 @@ export const AnswerPost: FC<IAnswerPost> = ({
             <button
               type='button'
               className={style.buttonSave}
-              onClick={() => clickSaveUpdate()}
+              onClick={clickSaveUpdate}
             >
               Изменить
             </button>

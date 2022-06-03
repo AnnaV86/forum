@@ -1,14 +1,22 @@
 import { ICurrentUser } from '..';
 
-const ADD_INFO_USER = 'ADD_INFO_USER';
+export enum actionTypesCurrentUser {
+  ADD_INFO_USER = 'ADD_INFO_USER',
+}
+
+type AddUserInfoActionType = {
+  type: actionTypesCurrentUser.ADD_INFO_USER;
+  payload: { user: ICurrentUser };
+};
 
 export function addUserInfoAction(user: ICurrentUser) {
   return {
-    type: ADD_INFO_USER,
+    type: actionTypesCurrentUser.ADD_INFO_USER,
     payload: user,
   };
 }
-export const initialStateCurrentUser = {
+
+export const initialStateCurrentUser: ICurrentUser = {
   id: '',
   login: '',
   password: '',
@@ -20,11 +28,11 @@ export const initialStateCurrentUser = {
 };
 
 export const currentUserReducer = (
-  state = initialStateCurrentUser,
-  action: any
+  state: ICurrentUser = initialStateCurrentUser,
+  action: AddUserInfoActionType
 ) => {
   switch (action.type) {
-    case ADD_INFO_USER: {
+    case actionTypesCurrentUser.ADD_INFO_USER: {
       return action.payload;
     }
 

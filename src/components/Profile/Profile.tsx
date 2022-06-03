@@ -19,7 +19,7 @@ export const Profile = () => {
 
   useNavigateControl(Path.profile);
 
-  const inputData = (evt: any) => {
+  const inputData = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
     setUserData((prev) => ({
       ...prev,
@@ -27,15 +27,15 @@ export const Profile = () => {
     }));
   };
 
-  const inputOldPassword = (evt: any) => {
+  const inputOldPassword = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setOldPassword(evt.target.value);
   };
 
-  const inputNewPassword = (evt: any) => {
+  const inputNewPassword = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setNewPassword(evt.target.value);
   };
 
-  const saveProfile = (evt: any) => {
+  const saveProfile = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     const updateUser = { ...user, ...userData };
     dispatch(updateUserThunk(updateUser));

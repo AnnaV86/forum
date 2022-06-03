@@ -5,7 +5,7 @@ import style from './postText.module.css';
 interface IPostTextProps {
   post: IPost;
   toggle: boolean;
-  clickSaveEditPost: any;
+  clickSaveEditPost: (updatePost: IPost) => void;
   avatar: string;
 }
 export const PostText: FC<IPostTextProps> = ({
@@ -16,9 +16,11 @@ export const PostText: FC<IPostTextProps> = ({
 }) => {
   const [updatePost, setUpdatePost] = useState(post);
 
-  const inputPost = (evt: any) => {
+  const inputPost = (
+    evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = evt.target;
-    setUpdatePost((prev: any) => ({
+    setUpdatePost((prev) => ({
       ...prev,
       [name]: value,
     }));

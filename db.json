@@ -107,7 +107,8 @@
         }
       ],
       "likes": [
-        "Ivan"
+        "Ivan",
+        "Mar"
       ]
     },
     {
@@ -136,7 +137,8 @@
         }
       ],
       "likes": [
-        "Mir"
+        "Mir",
+        "Mar"
       ]
     },
     {
@@ -166,17 +168,9 @@
       "author": "Иван Видутин",
       "login": "Ivan",
       "answer": [],
-      "likes": []
-    },
-    {
-      "id": "9uXjJPpJzGn06OsKSu22P",
-      "title": "sdgfsdfsdfsdf",
-      "text": "fdhnfgjfgjfgfghjghkjgjhkjhk",
-      "avatar": "https://sun9-west.userapi.com/sun9-53/s/v1/if1/Q9zFaSrvGv4KPRjHEWjtPkXXNkL_W3qHnZA-m4ohgeRmXU-ug4M4ZTumPzEVdklV0GufctJH.jpg?size=1548x2064&quality=96&type=album",
-      "author": "Иван Видутин",
-      "login": "Ivan",
-      "answer": [],
-      "likes": []
+      "likes": [
+        "Mar"
+      ]
     },
     {
       "id": "GkZqMZqikyFFBsrg_0e06",
@@ -186,7 +180,9 @@
       "author": "Margo Vidutina",
       "login": "Mar",
       "answer": [],
-      "likes": []
+      "likes": [
+        "Mar"
+      ]
     }
   ]
 }

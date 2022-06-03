@@ -6,13 +6,13 @@ import { addMessageAction } from '../../../../store/reducers/message';
 import style from './updateProfile.module.css';
 
 interface UpdateProfileProps {
-  inputData: any;
-  saveProfile: any;
-  inputOldPassword: any;
-  inputNewPassword: any;
+  inputData: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  saveProfile: (evt: React.FormEvent<HTMLFormElement>) => void;
+  inputOldPassword: (evt: React.ChangeEvent<HTMLInputElement>) => void;
+  inputNewPassword: (evt: React.ChangeEvent<HTMLInputElement>) => void;
   oldPassword: string;
   newPassword: string;
-  saveNewPassword: any;
+  saveNewPassword: () => void;
 }
 
 export const UpdateProfile: FC<UpdateProfileProps> = ({
@@ -30,7 +30,7 @@ export const UpdateProfile: FC<UpdateProfileProps> = ({
   const user = useSelector(currentUserInfo);
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
 
-  const savePassword = (evt: any) => {
+  const savePassword = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (oldPassword === user.password) {
       saveNewPassword();

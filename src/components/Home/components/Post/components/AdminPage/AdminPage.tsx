@@ -5,7 +5,7 @@ import style from './adminPage.module.css';
 
 interface IAdminPageProps {
   banUserLogin: string;
-  closePopup: any;
+  closePopup: () => void;
 }
 
 export const AdminPage: FC<IAdminPageProps> = ({
@@ -15,11 +15,11 @@ export const AdminPage: FC<IAdminPageProps> = ({
   const [day, setDay] = useState(0);
   const dispatch = useDispatch();
 
-  const enterDay = (evt: any) => {
-    setDay(evt.target.value);
+  const enterDay = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setDay(Number(evt.target.value));
   };
 
-  const acceptBanUser = (evt: any) => {
+  const acceptBanUser = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     dispatch(banUserThunk(banUserLogin, day));
     closePopup();
@@ -46,10 +46,7 @@ export const AdminPage: FC<IAdminPageProps> = ({
           </label>
           <input type='submit' value='Заблокировать' className={style.button} />
         </form>
-        <button
-          className={style.closeButton}
-          onClick={() => closePopup()}
-        ></button>
+        <button className={style.closeButton} onClick={closePopup}></button>
       </div>
     </div>
   );

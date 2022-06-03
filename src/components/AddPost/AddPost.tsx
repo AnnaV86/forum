@@ -23,7 +23,7 @@ export const AddPost: FC = () => {
     likes: [],
   });
   const navigate = useNavigate();
-  const login = localStorage.getItem('login');
+  const login = localStorage.getItem('login') || '';
 
   const inputData = (
     evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -81,7 +81,7 @@ export const AddPost: FC = () => {
       <button
         className={style.submit}
         type='button'
-        onClick={() => handleSubmit()}
+        onClick={handleSubmit}
       >
         Сохранить
       </button>

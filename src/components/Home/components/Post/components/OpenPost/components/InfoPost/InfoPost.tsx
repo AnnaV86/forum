@@ -16,7 +16,7 @@ export const InfoPost: FC<InfoPostProps> = ({ post }) => {
   const navigate = useNavigate();
   const [toggle, setToggle] = useState(false);
   const [postData, setPostData] = useState<IPost>(post);
-  const login = localStorage.getItem('login');
+  const login = localStorage.getItem('login') || '';
 
   const clickSaveEditPost = () => {
     dispatch(editPostThunk(postData));
@@ -32,9 +32,11 @@ export const InfoPost: FC<InfoPostProps> = ({ post }) => {
     setToggle(true);
   };
 
-  const inputPost = (evt: any) => {
+  const inputPost = (
+    evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = evt.target;
-    setPostData((prev: any) => ({
+    setPostData((prev) => ({
       ...prev,
       [name]: value,
     }));

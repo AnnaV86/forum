@@ -1,4 +1,4 @@
-import { IPost } from '..';
+import { IPost, IPostReducer } from '..';
 
 const GET_POST = 'GET_POST';
 const ADD_POST = 'ADD_POST';
@@ -33,7 +33,7 @@ export function deletePostAction(id: string) {
   };
 }
 
-const initialState = { posts: [] };
+const initialState: IPostReducer = { posts: [] };
 
 export const postsReducer = (state = initialState, action: any) => {
   switch (action.type) {
@@ -46,7 +46,7 @@ export const postsReducer = (state = initialState, action: any) => {
     case 'EDIT_POST': {
       return {
         ...state,
-        posts: state.posts.map((el: any) =>
+        posts: state.posts.map((el) =>
           el.id === action.payload.id ? action.payload : el
         ),
       };
@@ -54,7 +54,7 @@ export const postsReducer = (state = initialState, action: any) => {
     case 'DELETE_POST': {
       return {
         ...state,
-        posts: state.posts.filter((el: any) => el.id !== action.payload),
+        posts: state.posts.filter((el) => el.id !== action.payload),
       };
     }
 

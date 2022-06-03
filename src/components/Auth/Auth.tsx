@@ -22,7 +22,7 @@ export const Auth: FC = () => {
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
 
-  const inputData = (evt: any) => {
+  const inputData = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
     setAuthData((prev) => ({ ...prev, [name]: value }));
   };
@@ -44,7 +44,7 @@ export const Auth: FC = () => {
         clearTimeout(timeOutId);
       };
     }
-  }, [messageAuth]);
+  }, [messageAuth, dispatch]);
 
   return (
     <div className={style.auth}>

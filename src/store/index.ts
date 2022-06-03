@@ -18,7 +18,7 @@ export interface IPost {
   text: string;
   avatar: string;
   author: string;
-  login: string | null;
+  login: string;
   answer: Array<IAnswer>;
   likes: Array<string>;
 }
@@ -34,12 +34,14 @@ export interface ICurrentUser {
   avatar: string;
 }
 
+export interface IPostReducer {
+  posts: Array<IPost>;
+}
+
 export interface IStore {
   currentUserReducer: ICurrentUser;
   messageReducer: string;
-  postsReducer: {
-    posts: Array<IPost>;
-  };
+  postsReducer: IPostReducer;
 }
 
 const store: Store<IStore> = configureStore({

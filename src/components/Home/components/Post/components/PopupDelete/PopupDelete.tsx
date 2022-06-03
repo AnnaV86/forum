@@ -3,8 +3,8 @@ import style from './popup.module.css';
 
 interface PopupDeleteProps {
   id: string;
-  deleteCard: any;
-  closePopupDelete: any;
+  deleteCard: (id: string) => void;
+  closePopupDelete: () => void;
 }
 export const PopupDelete: FC<PopupDeleteProps> = ({
   id,
@@ -22,10 +22,10 @@ export const PopupDelete: FC<PopupDeleteProps> = ({
         <h1 className={style.title}>Удалить пост?</h1>
         <div className={style.wrapperButton}>
           {' '}
-          <button className={style.button} onClick={() => acceptDeletePost()}>
+          <button className={style.button} onClick={acceptDeletePost}>
             Да
           </button>
-          <button className={style.button} onClick={() => closePopupDelete()}>
+          <button className={style.button} onClick={closePopupDelete}>
             Нет
           </button>
         </div>

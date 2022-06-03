@@ -35,7 +35,7 @@ export const Registration: FC = () => {
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
 
-  const inputData = (evt: any) => {
+  const inputData = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = evt.target;
     setUserData((prev) => ({
       ...prev,
@@ -45,9 +45,9 @@ export const Registration: FC = () => {
     }));
   };
 
-  const enterAuth = async (evt: any) => {
+  const enterAuth = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    const newUser: any = await dispatch(getNewUserThunk(userData));
+    const newUser = await dispatch(getNewUserThunk(userData));
     if (newUser) {
       navigate(Path.auth);
     }
@@ -62,13 +62,13 @@ export const Registration: FC = () => {
         clearTimeout(timeOutId);
       };
     }
-  }, [messageAuth]);
+  }, [dispatch, messageAuth]);
 
   useEffect(() => {
     if (login) {
       navigate('/home');
     }
-  }, [login]);
+  }, [navigate, login]);
 
   return (
     <div className={style.registration}>

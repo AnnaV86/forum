@@ -26,8 +26,8 @@ export const OpenPost = () => {
     answer: [],
     likes: [],
   });
-  const login = localStorage.getItem('login');
-  const [newAnswer, setNewAnswer] = useState({
+  const login = localStorage.getItem('login') || '';
+  const [newAnswer, setNewAnswer] = useState<IAnswer>({
     id: '',
     text: '',
     avatar: '',
@@ -38,11 +38,10 @@ export const OpenPost = () => {
 
   useNavigateControl(Path.openPost, id);
   const user = useSelector(currentUserInfo);
-
   useEffect(() => {
     (async () => {
       const posts = await getPostsFetch();
-      const post = posts.filter((post: any) => post.id === id);
+      const post = posts.filter((post: IPost) => post.id === id);
       setPost(post[0]);
     })();
   }, []);
@@ -64,7 +63,7 @@ export const OpenPost = () => {
     dispatch(editPostThunk(newPost));
   };
 
-  const deleteAnswer = (id: any) => {
+  const deleteAnswer = (id: string) => {
     const newPost = {
       ...post,
       answer: post.answer.filter((el) => el.id !== id),
@@ -84,10 +83,10 @@ export const OpenPost = () => {
     dispatch(editPostThunk(newPost));
   };
 
-  const inputData = (evt: any) => {
+  const inputData = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const value = evt.target.value;
     setText(value);
-    setNewAnswer((prev: any) => ({
+    setNewAnswer((prev) => ({
       ...prev,
       text: value,
       avatar: user.avatar,

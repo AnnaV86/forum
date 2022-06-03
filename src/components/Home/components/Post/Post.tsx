@@ -13,13 +13,13 @@ import { AdminPage } from './components/AdminPage/AdminPage';
 import { PopupDelete } from './components/PopupDelete/PopupDelete';
 
 interface IPostProps {
-  post: any;
-  deleteCard: any;
+  post: IPost;
+  deleteCard: (id: string) => void;
 }
 export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const login = localStorage.getItem('login');
+  const login = localStorage.getItem('login') || '';
   const [editPost, setEditPost] = useState(post);
   const [activeLike, setActiveLike] = useState(false);
   const [toggle, setToggle] = useState(false);
@@ -81,7 +81,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
     if (editPost.likes.includes(`${login}`)) {
       setActiveLike(true);
     }
-  }, []);
+  }, [editPost.likes, login]);
 
   return (
     <div className={style.post}>
@@ -106,7 +106,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
           </div>{' '}
         </div>
         {user.role === 'admin' ? (
-          <p className={style.authorAdmin} onClick={() => banUser()}>
+          <p className={style.authorAdmin} onClick={banUser}>
             {editPost.login}
           </p>
         ) : (
