@@ -16,19 +16,23 @@ export const AddPost: FC = () => {
     id: '',
     title: '',
     text: '',
+    avatar: '',
     author: '',
     login: '',
     answer: [],
     likes: [],
   });
   const navigate = useNavigate();
-  const login: any = localStorage.getItem('login');
+  const login = localStorage.getItem('login');
 
-  const inputData = (evt: any) => {
+  const inputData = (
+    evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = evt.target;
     setNewPost((prev) => ({
       ...prev,
       [name]: value,
+      avatar: user.avatar,
       author: `${user.firstName} ${user.lastName}`,
       login: login,
       id: nanoid(),
@@ -42,6 +46,7 @@ export const AddPost: FC = () => {
       id: '',
       title: '',
       text: '',
+      avatar: '',
       author: '',
       login: '',
       answer: [],

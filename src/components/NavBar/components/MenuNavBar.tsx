@@ -1,25 +1,26 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { firstNameUser } from '../../../selectors/currentUser';
+import { currentUserInfo } from '../../../selectors/currentUser';
 import {
   initialStateCurrentUser,
-  loginUserAction,
+  addUserInfoAction,
 } from '../../../store/reducers/currentUser';
 import style from './navBar.module.css';
 
 export const MenuNavBar = () => {
   const dispatch = useDispatch();
   const activeClassName = style.menuLinkActive;
-  const firstName = useSelector(firstNameUser);
+  const { firstName, avatar } = useSelector(currentUserInfo);
 
   const outUser = () => {
     localStorage.removeItem('login');
-    dispatch(loginUserAction(initialStateCurrentUser));
+    dispatch(addUserInfoAction(initialStateCurrentUser));
   };
 
   return (
     <header className={style.header}>
+      <img className={style.avatar} src={avatar} alt='Фото профиля' />
       <nav className={style.headerMenu}>
         <NavLink
           to='/home'

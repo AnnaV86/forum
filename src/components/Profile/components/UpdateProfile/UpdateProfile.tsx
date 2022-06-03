@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUserInfo } from '../../../../selectors/currentUser';
-import { ICurrentUser, IStore } from '../../../../store';
+import { IStore } from '../../../../store';
 import { addMessageAction } from '../../../../store/reducers/message';
 import style from './updateProfile.module.css';
 
@@ -55,6 +55,16 @@ export const UpdateProfile: FC<UpdateProfileProps> = ({
   return (
     <>
       <form className={style.wrapper} onSubmit={saveProfile}>
+        <input
+          type='url'
+          name='avatar'
+          defaultValue={user.avatar}
+          className={style.inputText}
+          placeholder='Url аватара'
+          onChange={inputData}
+          required
+          title='Url-адрес'
+        />
         <input
           type='text'
           name='firstName'

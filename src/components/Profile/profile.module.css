@@ -16,7 +16,7 @@
   box-shadow: 4px 4px 3px rgb(84, 216, 161);
   border: 1px solid rgb(84, 216, 161);
   width: 300px;
-  height: 210px;
+  min-height: 210px;
   font-size: 24px;
   display: flex;
   flex-direction: column;
@@ -24,6 +24,15 @@
   align-items: center;
   margin-bottom: 10px;
   padding: 0 20px;
+}
+
+.avatar {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid rgb(84, 216, 161);
 }
 
 .text {
@@ -36,6 +45,7 @@
 
 .button {
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 80%;
   height: 30px;
   cursor: pointer;

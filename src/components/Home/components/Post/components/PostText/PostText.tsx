@@ -6,11 +6,13 @@ interface IPostTextProps {
   post: IPost;
   toggle: boolean;
   clickSaveEditPost: any;
+  avatar: string;
 }
 export const PostText: FC<IPostTextProps> = ({
   post,
   toggle,
   clickSaveEditPost,
+  avatar,
 }) => {
   const [updatePost, setUpdatePost] = useState(post);
 
@@ -48,7 +50,11 @@ export const PostText: FC<IPostTextProps> = ({
         </form>
       ) : (
         <>
-          <h2 className={style.title}>{post.title}</h2>
+          <div className={style.wrapper}>
+            <img className={style.avatar} src={avatar} alt='Фото профиля' />
+            <h2 className={style.title}>{post.title}</h2>
+          </div>
+
           <p className={style.text}>{post.text}</p>
         </>
       )}

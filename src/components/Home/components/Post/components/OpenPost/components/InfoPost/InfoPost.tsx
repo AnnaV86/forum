@@ -66,10 +66,18 @@ export const InfoPost: FC<InfoPostProps> = ({ post }) => {
         </form>
       ) : (
         <div className={style.postContainer}>
-          <p className={style.author}>{post.author}</p>
+          <div className={style.wrapper}>
+            {' '}
+            <img
+              className={style.avatar}
+              src={post.avatar}
+              alt='Фото профиля'
+            />
+            <p className={style.author}>{post.author}</p>
+          </div>
           <h2 className={style.title}>{post.title}</h2>
           <p className={style.text}>{post.text}</p>
-          {post.author === login && (
+          {post.login === login && (
             <div className={style.buttons}>
               <button
                 type='button'

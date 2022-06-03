@@ -80,12 +80,20 @@ export const AnswerPost: FC<IAnswerPost> = ({
       <div>
         <div className={style.wrapper}>
           {' '}
-          <h2
-            className={style.commentAuthor}
-            onClick={() => commentAnswer(comment.author)}
-          >
-            {comment.author}
-          </h2>
+          <div className={style.container}>
+            {' '}
+            <img
+              className={style.avatar}
+              src={comment.avatar}
+              alt='Фото профиля'
+            />
+            <h2
+              className={style.commentAuthor}
+              onClick={() => commentAnswer(comment.author)}
+            >
+              {comment.author}
+            </h2>
+          </div>
           {user.role === 'admin' && (
             <h2 className={style.commentLogin} onClick={() => banUser()}>
               ({comment.login})

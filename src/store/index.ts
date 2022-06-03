@@ -6,6 +6,7 @@ import { configureStore } from '@reduxjs/toolkit';
 export interface IAnswer {
   text: string;
   id: string;
+  avatar: string;
   author: string;
   login: string;
   likes: Array<string>;
@@ -15,8 +16,9 @@ export interface IPost {
   id: string;
   title: string;
   text: string;
+  avatar: string;
   author: string;
-  login: string;
+  login: string | null;
   answer: Array<IAnswer>;
   likes: Array<string>;
 }
@@ -29,6 +31,7 @@ export interface ICurrentUser {
   lastName: string;
   role: string;
   banTime: number;
+  avatar: string;
 }
 
 export interface IStore {

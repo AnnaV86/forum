@@ -3,7 +3,6 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 import { currentUserInfo } from '../../../selectors/currentUser';
-import { IStore } from '../../../store';
 
 interface BanControlProps {
   children: JSX.Element;

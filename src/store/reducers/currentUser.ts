@@ -1,29 +1,13 @@
 import { ICurrentUser } from '..';
 
-const LOGIN_USER = 'LOGIN_USER';
-const UPDATE_USER = 'UPDATE_USER';
+const ADD_INFO_USER = 'ADD_INFO_USER';
 
-export function loginUserAction(user: ICurrentUser) {
+export function addUserInfoAction(user: ICurrentUser) {
   return {
-    type: LOGIN_USER,
+    type: ADD_INFO_USER,
     payload: user,
   };
 }
-
-export function editUserAction(user: ICurrentUser) {
-  return {
-    type: UPDATE_USER,
-    payload: user,
-  };
-}
-
-export function banUserAction(user: ICurrentUser) {
-  return {
-    type: UPDATE_USER,
-    payload: user,
-  };
-}
-
 export const initialStateCurrentUser = {
   id: '',
   login: '',
@@ -32,6 +16,7 @@ export const initialStateCurrentUser = {
   lastName: '',
   role: '',
   banTime: 0,
+  avatar: '',
 };
 
 export const currentUserReducer = (
@@ -39,15 +24,10 @@ export const currentUserReducer = (
   action: any
 ) => {
   switch (action.type) {
-    case LOGIN_USER: {
+    case ADD_INFO_USER: {
       return action.payload;
     }
-    case UPDATE_USER: {
-      return {
-        ...state,
-        role: action.payload.role,
-      };
-    }
+
     default:
       return state;
   }

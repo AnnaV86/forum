@@ -2,9 +2,11 @@
   color: rgb(0, 110, 110);
   font-size: 15px;
   cursor: pointer;
+  margin: 10px 0 0 10px;
 }
 
 .commentText {
+  margin: 0 0 5px 50px;
   padding-right: 10px;
 }
 
@@ -48,7 +50,7 @@
 
 .like {
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .likeButton {
@@ -61,7 +63,12 @@
 }
 
 .likeCount {
-  margin: 0 0 0 5px;
+  margin: 0 0 0 3px;
+}
+
+.container {
+  display: flex;
+  margin-top: 5px;
 }
 
 .wrapper {
@@ -72,7 +79,12 @@
   font-size: 15px;
   cursor: pointer;
   margin-left: 20px;
-  /* position: absolute;
-  top: 1px;
-  right: 20px; */
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(84, 216, 161);
 }

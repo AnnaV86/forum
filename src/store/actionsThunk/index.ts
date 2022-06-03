@@ -10,11 +10,7 @@ import {
 } from '../../api';
 import { IAuthData } from '../../components/Auth/Auth';
 import { IUserData } from '../../components/Registration/Registration';
-import {
-  banUserAction,
-  editUserAction,
-  loginUserAction,
-} from '../reducers/currentUser';
+import { addUserInfoAction } from '../reducers/currentUser';
 import { addMessageAction } from '../reducers/message';
 import {
   deletePostAction,
@@ -44,7 +40,7 @@ export function updateUserThunk(user: ICurrentUser) {
   return async (dispatch: Dispatch) => {
     const editUser = await editUserFetch(user);
 
-    dispatch(editUserAction(editUser));
+    dispatch(addUserInfoAction(editUser));
   };
 }
 
@@ -57,7 +53,7 @@ export function banUserThunk(login: string, day: number) {
     if (findUser) {
       const newStatusBanUser = { ...findUser, banTime: banTime };
       const editUser = await editUserFetch(newStatusBanUser);
-      dispatch(banUserAction(editUser));
+      dispatch(addUserInfoAction(editUser));
     }
   };
 }
@@ -79,7 +75,6 @@ export function getNewUserThunk(userData: IUserData) {
     } else {
       const newUser = await addUserFetch(userData);
       return newUser;
-      // dispatch(loginUserAction(newUser));
     }
   };
 }
@@ -113,6 +108,6 @@ export const loginUserThunk = (login: string) => {
     const usersDB: Array<IUserData> = await getUsersFetch();
     const user: IUserData = usersDB.filter((el) => el.login === login)[0];
 
-    dispatch(loginUserAction(user));
+    dispatch(addUserInfoAction(user));
   };
 };

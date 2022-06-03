@@ -20,6 +20,7 @@ export const OpenPost = () => {
     id: '',
     title: '',
     text: '',
+    avatar: '',
     author: '',
     login: '',
     answer: [],
@@ -29,6 +30,7 @@ export const OpenPost = () => {
   const [newAnswer, setNewAnswer] = useState({
     id: '',
     text: '',
+    avatar: '',
     author: '',
     login: '',
     likes: [],
@@ -88,6 +90,7 @@ export const OpenPost = () => {
     setNewAnswer((prev: any) => ({
       ...prev,
       text: value,
+      avatar: user.avatar,
       author: `${user.firstName} ${user.lastName}`,
       login: login,
       id: nanoid(),

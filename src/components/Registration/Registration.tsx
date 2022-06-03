@@ -16,6 +16,7 @@ export interface IUserData {
   lastName: string;
   role: string;
   banTime: number;
+  avatar: string;
 }
 
 export const Registration: FC = () => {
@@ -29,7 +30,8 @@ export const Registration: FC = () => {
     firstName: '',
     lastName: '',
     role: '',
-    banTime: 0
+    banTime: 0,
+    avatar: '',
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);
 
@@ -40,7 +42,6 @@ export const Registration: FC = () => {
       [name]: value,
       role: 'user',
       id: nanoid(),
-      status: 'active',
     }));
   };
 
@@ -122,6 +123,17 @@ export const Registration: FC = () => {
             pattern='^[a-zA-ZА-Яа-яЁё\s]+$'
             minLength={2}
             title='Кириллица'
+          />
+        </label>
+        <label>
+          Аватар:{' '}
+          <input
+            type='url'
+            name='avatar'
+            placeholder='Ссылка на ваш аватар'
+            onChange={inputData}
+            required
+            title='url-адрес'
           />
         </label>
         <input

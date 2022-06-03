@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigateControl } from '../../hooks/useNavigateControl';
 import { currentUserInfo } from '../../selectors/currentUser';
-import { ICurrentUser, IStore } from '../../store';
+import { ICurrentUser } from '../../store';
 import { updateUserThunk } from '../../store/actionsThunk';
-import { addMessageAction } from '../../store/reducers/message';
 import { Path } from '../App/models/paths';
-import { IUserData } from '../Registration/Registration';
 import { UpdateProfile } from './components/UpdateProfile/UpdateProfile';
 import style from './profile.module.css';
 
@@ -17,15 +15,7 @@ export const Profile = () => {
   const [newPassword, setNewPassword] = useState('');
   const user = useSelector(currentUserInfo);
 
-  const [userData, setUserData] = useState<ICurrentUser>({
-    id: '',
-    login: '',
-    password: '',
-    firstName: '',
-    lastName: '',
-    role: '',
-    banTime: 0,
-  });
+  const [userData, setUserData] = useState<ICurrentUser | {}>({});
 
   useNavigateControl(Path.profile);
 
@@ -47,29 +37,18 @@ export const Profile = () => {
 
   const saveProfile = (evt: any) => {
     evt.preventDefault();
-    dispatch(updateUserThunk(userData));
+    const updateUser = { ...user, ...userData };
+    dispatch(updateUserThunk(updateUser));
+    setUserData({});
     setToggle(false);
   };
 
   const saveNewPassword = () => {
-    const newUserData = {
-      ...userData,
-      password: newPassword,
-    };
-    setUserData(newUserData);
-    dispatch(updateUserThunk(newUserData));
+    const updateUser = { ...user, password: newPassword };
+    dispatch(updateUserThunk(updateUser));
     setOldPassword('');
     setNewPassword('');
   };
-
-  useEffect(() => {
-    const timeOutId = setTimeout(() => {
-      setUserData(user);
-    }, 1000);
-    return () => {
-      clearTimeout(timeOutId);
-    };
-  }, []);
 
   return (
     <div className={style.profile}>
@@ -86,6 +65,7 @@ export const Profile = () => {
         />
       ) : (
         <div className={style.wrapper}>
+          <img className={style.avatar} src={user.avatar} alt='Фото профиля' />
           <p className={style.text}>Имя: {user.firstName} </p>
           <p className={style.text}>Фамилия: {user.lastName} </p>
           <p className={style.text}>Логин: {user.login} </p>

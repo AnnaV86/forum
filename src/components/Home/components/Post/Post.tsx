@@ -89,6 +89,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
         post={editPost}
         toggle={toggle}
         clickSaveEditPost={clickSaveEditPost}
+        avatar={editPost.avatar}
       />
       <div className={style.infoPost}>
         <div className={style.wrapper}>
@@ -125,7 +126,7 @@ export const Post: FC<IPostProps> = ({ post, deleteCard }) => {
           Удалить
         </button>
       )}
-      {editPost.author === login && (
+      {editPost.login === login && (
         <>
           <button
             type='button'

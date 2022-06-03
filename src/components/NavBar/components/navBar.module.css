@@ -7,6 +7,16 @@
   flex-direction: row;
 }
 
+.avatar {
+  margin-top: 2px;
+  margin-left: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(84, 216, 161);
+}
+
 .headerMenu {
   display: flex;
   flex-direction: row;
