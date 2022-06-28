@@ -1,0 +1,62 @@
+.container {
+  height: 379px;
+}
+
+.img {
+  height: 184px;
+  background-image: url(../../../../../../../public/Frame.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+  margin-left: 24px;
+  font-style: bold;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  margin-top: 12px;
+  margin-left: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.button {
+  margin-top: 24px;
+  margin-left: 24px;
+  width: 145px;
+  height: 45px;
+  background-color: #ffa037;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.close {
+  background-image: url(../../../../../../images/close_fill_grey.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: unset;
+  width: 20px;
+  height: 20px;
+  border: none;
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  cursor: pointer;
+}

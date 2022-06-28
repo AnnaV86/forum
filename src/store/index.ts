@@ -31,6 +31,7 @@ export interface ICurrentUser {
   lastName: string;
   role: string;
   banTime: number;
+  interview: boolean;
   avatar: string;
 }
 

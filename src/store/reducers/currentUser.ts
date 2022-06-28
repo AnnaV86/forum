@@ -24,6 +24,7 @@ export const initialStateCurrentUser: ICurrentUser = {
   lastName: '',
   role: '',
   banTime: 0,
+  interview: true,
   avatar: '',
 };
 

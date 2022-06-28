@@ -1,0 +1,79 @@
+.container {
+  height: 379px;
+  padding-left: 24px;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+  margin-left: 24px;
+  font-style: bold;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  margin-top: 12px;
+  margin-left: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+.close {
+  background-image: url(../../../../../../images/close_fill_grey.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: unset;
+  width: 20px;
+  height: 20px;
+  border: none;
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.buttons {
+  margin-top: 24px;
+}
+
+.radioBtn {
+  display: inline-block;
+  margin-right: 4px;
+  width: 32px;
+  height: 32px;
+  border: none;
+}
+
+.radioBtn:hover {
+  opacity: 0.5;
+}
+
+.radioBtn input[type='radio'] {
+  display: none;
+  border: 1px solid #c9c9c9;
+}
+
+.radioBtn label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 5.5px 10px;
+  line-height: 34px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  user-select: none;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.radioBtn:last-child label {
+  padding: 5.5px 6px;
+}

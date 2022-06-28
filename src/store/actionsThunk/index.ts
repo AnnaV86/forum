@@ -1,5 +1,6 @@
 import { ICurrentUser, IPost } from '..';
 import {
+  addFeedbackFetch,
   addNewPostFetch,
   addUserFetch,
   deletePostFetch,
@@ -111,3 +112,11 @@ export const loginUserThunk = (login: string) => {
     dispatch(addUserInfoAction(user));
   };
 };
+
+export function addFeedbackThunk(feedback: Array<string>) {
+  return async (dispatch: Dispatch) => {
+    const newfeedback = await addFeedbackFetch(feedback);
+
+    // dispatch(addPostAction(post));
+  };
+}

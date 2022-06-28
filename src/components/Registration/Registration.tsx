@@ -16,6 +16,7 @@ export interface IUserData {
   lastName: string;
   role: string;
   banTime: number;
+  interview: boolean;
   avatar: string;
 }
 
@@ -31,6 +32,7 @@ export const Registration: FC = () => {
     lastName: '',
     role: '',
     banTime: 0,
+    interview: false,
     avatar: '',
   });
   const messageAuth = useSelector((store: IStore) => store.messageReducer);

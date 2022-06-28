@@ -54,7 +54,9 @@ export const PostText: FC<IPostTextProps> = ({
         <>
           <div className={style.wrapper}>
             <img className={style.avatar} src={avatar} alt='Фото профиля' />
-            <h2 className={style.title}>{post.title}</h2>
+            <h2 className={style.title} title={post.title}>
+              {post.title}
+            </h2>
           </div>
 
           <p className={style.text}>{post.text}</p>

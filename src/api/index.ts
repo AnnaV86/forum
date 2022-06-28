@@ -93,3 +93,20 @@ export const deletePostFetch = async (id: string) => {
   });
   return await response.json();
 };
+
+/**
+ * Добавляем отзыв
+ */
+
+export const addFeedbackFetch = async (feedback: Array<string>) => {
+  console.log(feedback);
+  const response = await fetch(`http://localhost:3010/resultInterview`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(feedback),
+  });
+
+  return await response.json();
+};

@@ -1,0 +1,42 @@
+.container {
+  height: 130px;
+  padding-left: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+  font-style: bold;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  margin-top: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  margin-bottom: 16px;
+}
+
+.close {
+  background-image: url(../../../../../../images/close_fill_grey.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: unset;
+  width: 20px;
+  height: 20px;
+  border: none;
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+@keyframes fadeInDown {
+  from {
+    transform: translate3d(0px, 100%, 0px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+.container {
+  width: 426px;
+  background-color: #fff;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  animation-duration: 1.5s;
+  animation-fill-mode: both;
+  animation-name: fadeInDown;
+  box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
+    0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
+    0px 0px 1px rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+}
